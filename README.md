@@ -27,11 +27,10 @@ Se han definido los siguientes user journeys:
 ### Milestones
 Se han definido los siguientes milestones principales:
 1. [M0] - Modelo del Problema
-2. [M1] - Registro y Visualización de Gastos Fijos
-3. [M2] - Registro y Predicción de Gastos Variables
-4. [M3] - Planificación de Ahorro y Evaluación de Gastos Adicionales
+2. [M1] - Registro y Gestión de Gastos Fijos y Variables
+3. [M2] - Planificación de Ahorro y Evaluación de Gastos Adicionales
 
 También se ha definido un milestone adicional:
-1. [M4] - Revisión Mensual y Ajustes Financieros
+1. [M3] - Revisión Mensual y Ajustes Financieros
 
 [Milestones](/docs/milestones.md)  
