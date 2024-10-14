@@ -1,12 +1,12 @@
 # Milestones
 
 ## [M0] - Modelo del Problema
-Entregable: Modelo que represente los elementos clave del problema financiero del estudiante, incluyendo los gastos fijos, gastos variables, y el presupuesto mensual del estudiante.  
-Viabilidad: Será viable cuando el sistema modele correctamente los gastos fijos, gastos variables y el presupuesto.   
+Entregable: Modelo que represente los elementos clave del problema financiero del estudiante, contenidos en las historias de usuario HU1 y HU2.  
+Viabilidad: Será viable cuando refleje de manera precisa el dominio del problema, utilizando la información contenida en las historias de usuario asociadas al hito.    
 Historias de Usuario asociadas: HU1 y HU2.  
 
 ## [M1] - Registro y Gestión de Gastos Fijos y Variables
-Entregable: Código que permita registrar y gestionar tanto sus gastos fijos como sus gastos variables. Además, el sistema debe ser capaz de generar predicciones basadas en datos históricos para los gastos variables, que ayuden a prever el impacto futuro de esos gastos en el presupuesto.  
+Entregable: Código que permita registrar y gestionar tanto los gastos fijos como los gastos variables. Además, el sistema debe ser capaz de generar predicciones basadas en datos históricos para los variables, que ayuden a prever el impacto futuro de ellos en el presupuesto.  
 Viabilidad: Será viable cuando el sistema permita registrar correctamente los gastos fijos y variables, y genere predicciones útiles para los gastos variables basadas en datos históricos. Se realizarán pruebas que validarán que los gastos se registran correctamente y que las predicciones reflejan con precisión los patrones históricos y estacionales.    
 Historias de Usuario asociadas: HU1 y HU2.  
 
