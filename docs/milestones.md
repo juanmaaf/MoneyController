@@ -2,7 +2,7 @@
 
 ## [M0] - Modelo del Problema
 Entregable: Modelo que represente los elementos clave del problema financiero del estudiante, contenidos en la historia de usuario HU1.  
-Viabilidad: Será viable cuando refleje de manera precisa las entidades clave del problema financiero y las relaciones entre ellas. Otro desarrollador debe poder entender el modelo y continuar con el desarrollo sin ambigüedades.  
+Viabilidad: Será viable cuando refleje de manera precisa las entidades clave del problema y las relaciones entre ellas. Otro desarrollador debe poder entender el modelo y continuar con el desarrollo sin ambigüedades.  
 
 ## [M1] - Control del Presupuesto
 Entregable: Código que, partiendo del modelo definido en M0, permita el registro y procesamiento de los gastos, proporcionando predicciones sobre los futuros gastos variables.  
