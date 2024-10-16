@@ -9,8 +9,7 @@ Un alumno de Ingeniería Informática tiene problemas de presupuesto, ya que no 
 ### Historias de Usuario
 Se han definido las siguientes historias de usuario: 
 1. [HU1] - Falta de Control sobre los Gastos Fijos y Variables
-3. [HU2] - Incapacidad para Planificar Ahorros Debido a Gastos Inciertos
-4. [HU3] - Falta de Información para Decidir si un Gasto Adicional es Viable
+2. [HU2] - Falta de Información para Decidir si un Gasto Adicional es Viable
 
 [Historias de Usuario](/docs/historias_usuario.md)  
 
@@ -18,17 +17,13 @@ Se han definido las siguientes historias de usuario:
 Se han definido los siguientes user journeys:
 1. [UserJourney1] - Registro de Gastos Fijos
 2. [UserJourney2] - Registro y Seguimiento de Gastos Variables
-3. [UserJourney3] - Intento de Ahorro Mensual
-4. [UserJourney4] - Evaluación de Gasto Adicional
+3. [UserJourney3] - Evaluación de Gasto Adicional
 
 [User Journeys](/docs/user_journeys.md)  
 
 ### Milestones
 Se han definido los siguientes milestones:
 1. [M0] - Modelo del Problema
-2. [M1] - Control del Presupuesto
-
-Se han definido los siguientes milestones adicionales:
-1. [M2] - Planificación de Ahorro y Evaluación de Gastos Adicionales
+2. [M1] - Algoritmo de Gastos Adicionales
 
 [Milestones](/docs/milestones.md)  

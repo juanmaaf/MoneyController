@@ -1,16 +1,12 @@
 # Milestones
 
 ## [M0] - Modelo del Problema
-Entregable: Modelo que represente los elementos clave del problema financiero del estudiante, contenidos en la historia de usuario HU1.  
+Entregable: Modelo que represente los elementos clave del problema financiero del estudiante, contenidos en las historias de usuario HU1 y HU2.  
 Viabilidad: Será viable cuando refleje de manera precisa las entidades clave del problema y las relaciones entre ellas. Otro desarrollador debe poder entender el modelo y continuar con el desarrollo sin ambigüedades.  
 
-## [M1] - Control del Presupuesto
-Entregable: Código que, partiendo del modelo definido en M0, permita el registro y procesamiento de los gastos, proporcionando predicciones sobre los futuros gastos variables.  
-Lógica de negocio: El sistema permitirá la entrada de los gastos y aceptará actualizaciones, calculando el presupuesto restante. Usará datos históricos para identificar patrones de gastos y generar predicciones que ayuden al usuario a anticipar futuros gastos variables.  
-Viabilidad: Será viable cuando las pruebas realizadas verifiquen el correcto registro y la utilidad de las predicciones realizadas.  
+## [M1] - Algoritmo de Gastos Adicionales
+Entregable: Código funcional, creado a partir del modelo definido a través de las historias de usuario HU1 y HU2, que será utilizado para calcular si el usuario puede permitirse un gasto adicional. Debe atender a las peticones de HU2.  
+Lógica de negocio: El sistema calculará, en base al comportamiento en meses anteriores (gastos fijos, variables y compromiso de ahorro), cúanto podrá gastar el usuario en un determinado momento.   
+Viabilidad: Será viable cuando las pruebas realizadas verifiquen que el algoritmo genera decisiones útiles que no comprometan presupuesto y ahorro.  
 
-# Milestones Adicionales 
-
-## [M2] - Planificación de Ahorro y Evaluación de Gastos Adicionales
-Entregable: Código que permita configurar un plan de ahorro mensual y evaluar la viabilidad de realizar un gasto adicional basado en el presupuesto actual.  
-Viabilidad: Será viable cuando el sistema permita configurar el plan de ahorro y calcule correctamente si un gasto adicional es viable sin comprometer las metas de ahorro. Además, se realizarán pruebas que verifiquen que los cálculos sean precisos y no se comprometa el ahorro.  
+[Historias de Usuario](/docs/historias_usuario.md)  
