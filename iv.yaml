@@ -1,2 +1,5 @@
 lenguaje: python
-entidad: main.py
+entidades:
+  - src/gasto.py
+  - src/presupuesto.py
+  - main.py
