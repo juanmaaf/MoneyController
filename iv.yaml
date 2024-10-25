@@ -1,5 +1,5 @@
 lenguaje: python
 entidad:
-  - src/gasto.py
-  - src/presupuesto.py
-  - main.py
+  - money_controller/gasto.py
+  - money_controller/presupuesto.py
+  - money_controller.py
