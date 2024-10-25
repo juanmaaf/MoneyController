@@ -1,6 +1,16 @@
 from src.gasto import Gasto
 from src.presupuesto import Presupuesto
 
+def obtener_tipo_gasto():
+    while True:
+        tipo_gasto = input("¿Es un gasto fijo? (s/n): ").lower()
+        if tipo_gasto == 's':
+            return True
+        elif tipo_gasto == 'n':
+            return False
+        else:
+            print("Respuesta no válida. Por favor, responde con 's' para sí o 'n' para no.")
+
 def main():
     presupuesto = float(input("Introduce el monto total del presupuesto mensual: "))
     presupuesto_mensual = Presupuesto(presupuesto)
@@ -12,7 +22,7 @@ def main():
         monto = float(input("Introduce el monto del gasto: "))
         
         tipo_gasto = input("¿Es un gasto fijo? (s/n): ").lower()
-        fijo = tipo_gasto == 's'
+        fijo = obtener_tipo_gasto()
         
         nuevo_gasto = Gasto(descripcion, monto, fijo)
         presupuesto_mensual.agregar_gasto(nuevo_gasto)
