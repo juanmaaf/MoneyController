@@ -1,1 +1,13 @@
+# Ignora i file di configurazione locali
+.env
+.DS_Store
 
+# Ignora la cartella dei log
+logs/
+
+# Ignora file di compilazione
+*.pyc
+__pycache__/
+
+# Ignora directory di ambienti virtuali Python
+venv/
