@@ -1,1 +1,16 @@
+# Ignora i file di configurazione locali
+.env
+.DS_Store
+Thumbs.db
 
+# Ignora la cartella dei log
+logs/
+*.log
+
+# Ignora file di compilazione
+*.pyc
+*.pyo
+__pycache__/
+
+# Ignora directory di ambienti virtuali Python
+venv/
