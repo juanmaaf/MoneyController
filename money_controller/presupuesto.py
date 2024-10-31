@@ -6,10 +6,10 @@ from money_controller.gasto import Gasto
 
 class Presupuesto:
     def __init__(self, monto_total):
+        
+        if monto_total <= 0:
+            raise ValueError("El presupuesto total debe ser un valor positivo")
+        
         self.monto_total = monto_total
         self.gastos = []
-<<<<<<< HEAD
         self.ingresos = []
-=======
-        self.ingresos = []
->>>>>>> e70bf4b683559a8722dc67bcf02bb4fbb2b1f94f
