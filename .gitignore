@@ -1,12 +1,24 @@
 # Ignora i file di configurazione locali
 .env
 .DS_Store
+<<<<<<< HEAD
 
 # Ignora la cartella dei log
 logs/
 
 # Ignora file di compilazione
 *.pyc
+=======
+Thumbs.db
+
+# Ignora la cartella dei log
+logs/
+*.log
+
+# Ignora file di compilazione
+*.pyc
+*.pyo
+>>>>>>> e70bf4b683559a8722dc67bcf02bb4fbb2b1f94f
 __pycache__/
 
 # Ignora directory di ambienti virtuali Python

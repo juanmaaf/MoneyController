@@ -8,4 +8,8 @@ class Presupuesto:
     def __init__(self, monto_total):
         self.monto_total = monto_total
         self.gastos = []
+<<<<<<< HEAD
         self.ingresos = []
+=======
+        self.ingresos = []
+>>>>>>> e70bf4b683559a8722dc67bcf02bb4fbb2b1f94f

@@ -2,4 +2,7 @@ lenguaje: python
 entidad:
   - money_controller/gasto.py
   - money_controller/presupuesto.py
+<<<<<<< HEAD
   - money_controller.py
+=======
+>>>>>>> e70bf4b683559a8722dc67bcf02bb4fbb2b1f94f
