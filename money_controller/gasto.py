@@ -6,6 +6,3 @@ class Gasto:
         self.descripcion = descripcion
         self.monto = monto
         self.fijo = fijo
-    
-    def es_fijo(self):
-        return self.fijo
