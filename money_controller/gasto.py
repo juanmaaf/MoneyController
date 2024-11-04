@@ -1,11 +1,16 @@
-#¿Cómo podemos categorizar los gastos en fijos y variables?
-#[HU1]
-
 # money_controller/gasto.py
 from dataclasses import dataclass
 
 @dataclass
 class Gasto:
-    descripcion: str  # La descrizione della spesa
-    monto: float      # L'importo della spesa
-    fijo: bool = True # True per spese fisse, False per variabili
+    """
+    Representa un gasto en el presupuesto mensual.
+
+    Atributos:
+        descripcion (str): La descripción del gasto.
+        monto (float): La cantidad del gasto.
+        fijo (bool): Indica si el gasto es fijo (True) o variable (False).
+    """
+    descripcion: str
+    monto: float
+    fijo: bool = True
