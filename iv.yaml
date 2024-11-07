@@ -1,3 +1,2 @@
 lenguaje: python
-entidad:
-  - money_controller/gasto.py
+entidad: money_controller/gasto.py
