@@ -1,6 +1,6 @@
 from money_controller.gasto import Gasto
 from dataclasses import dataclass, field
-from typing import List
+from typing import List, Optional
 
 @dataclass
 class Presupuesto:
@@ -21,3 +21,4 @@ class Presupuesto:
     gastos_fijos: List[Gasto] = field(default_factory=list)
     gastos_variables: List[Gasto] = field(default_factory=list)
     ingresos: List[float] = field(default_factory=list)
+    gasto_no_planificado: Optional[float] = None
