@@ -10,10 +10,14 @@ class Presupuesto:
 
     Atributo:
         monto_total (float): El presupuesto total mensual.
-        gastos (List[Gasto]): Lista de gastos realizados.
+        gastos_fijos (List[Gasto]): Lista de gastos fijos (ej. alquiler, internet).
+
+        gastos_variables (List[Gasto]): Lista de gastos variables (ej.coomida, entretenimiento).
+
         ingresos (List[float]): Lista de ingresos.
         
     """
     monto_total: float
-    gastos: List[Gasto] = field(default_factory=list)
+    gastos_fijos: List[Gasto] = field(default_factory=list)
+    gastos_variables: List[Gasto] = field(default_factory=list)
     ingresos: List[float] = field(default_factory=list)
