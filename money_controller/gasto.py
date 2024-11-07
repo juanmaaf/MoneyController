@@ -1,6 +1,5 @@
-# money_controller/gasto.py
 from dataclasses import dataclass
-
+from money_controller.categoriaGasto import CategoriaGasto
 @dataclass
 class Gasto:
     """
@@ -9,8 +8,8 @@ class Gasto:
     Atributos:
         descripcion (str): La descripción del gasto.
         monto (float): La cantidad del gasto.
-        fijo (bool): Indica si el gasto es fijo (True) o variable (False).
+        categoria (CategoriaGasto): La categoría del gasto, fija o variable.
     """
     descripcion: str
     monto: float
-    fijo: bool = True
+    categoria: CategoriaGasto = CategoriaGasto
