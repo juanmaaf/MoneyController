@@ -1,2 +1,9 @@
 lenguaje: python
 entidad: money_controller/gasto.py
+automatizar:
+  fichero: "pyproject.toml"
+  orden: "poetry"
+  tareas:
+    - install: "Instala todas las dependencias."
+    - check: "Verifica la sintaxis con flake8."
+    - test: "Ejecuta las pruebas con pytest."
