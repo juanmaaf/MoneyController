@@ -42,6 +42,9 @@ Se han definido los siguientes milestones:
     - Para instalar las dependencias del proyecto realizamos:
     `poetry install`
 
+    - Para verificar la configuración de Poetry (comprobar si hay errores en la configuración del proyecto) utilizamos:
+    `poetry check`
+
     - Para formatear el código y corregir la sintaxis (utilizando `black`) realizamos:
     `poetry run format_code`
 
