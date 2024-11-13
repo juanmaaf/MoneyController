@@ -28,3 +28,38 @@ Se han definido los siguientes milestones:
 2. [M1] - Algoritmo de Gastos 
 
 [Milestones](/docs/milestones.md)  
+
+# Herramientas utilizadas
+
+- Lenguaje de programación: `Python`
+
+- Gestor de dependencias: `Poetry`. [Más información](/docs/gestor_dependencias.md)
+
+- Gestor de tareas: `Poetry` (utilizado también como gestor de tareas). [Más información](/docs/gestor_tareas.md)
+    - Si no está instalado, su instalación es muy simple y basta con ejecutar el siguiente comando:
+    `curl -sSL https://install.python-poetry.org | python3 -`
+    
+    - Para instalar las dependencias del proyecto realizamos:
+    `poetry install`
+
+    - Para formatear el código y corregir la sintaxis (utilizando `black`) realizamos:
+    `poetry run format_code`
+
+    - Para comprobar la sintaxis de los archivos (utilizando `flake8` en este caso) realizamos:
+    `poetry run check_syntax`
+
+    - Para comprobar el estilo del código (utilizando `black`) realizamos:
+    `poetry run check_style`
+
+    - Para limpiar los archivos generados en la construcción del proyecto (eliminando entornos virtuales y archivos temporales) realizamos:
+    `poetry run clean`
+
+    - Para ejecutar las pruebas (utilizando `pytest`) realizamos:
+    `poetry run test`
+
+    - Para construir el proyecto (por ejemplo, empaquetarlo para distribución) realizamos:
+    `poetry run build`
+
+    - Con `poetry run full` corregimos la sintaxis, verificamos el estilo, compilamos el proyecto y ejecutamos las pruebas.
+
+    - Con `poetry run clean-full` realizamos todo lo anterior, pero primero limpiamos los archivos de compilación.
