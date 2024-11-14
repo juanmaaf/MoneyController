@@ -1,14 +1,16 @@
 # Gestor de Tareas
 
-Para automatizar tareas en este proyecto de Python, como ejecutar pruebas o verificar el estilo de código, he optado por **Poetry**. A continuación, explico las razones por las que `Poetry` es la opción más adecuada para este proyecto.  
+Para la automatización de tareas en este proyecto de Python, he evaluado distintas opciones y he optado por **Poetry**. Esta elección se basa en varios criterios específicos necesarios para el proyecto:
+
+- **Centralización de configuraciones**: El proyecto requiere que la configuración de tareas y scripts se centralice en un solo archivo, idealmente en `pyproject.toml`, para una administración más simple.  
+- **Automatización de tareas personalizada**: Necesitamos una herramienta que permita definir y ejecutar tareas como pruebas y verificación de estilo de código sin necesidad de archivos adicionales.  
+- **Eficiencia para proyectos Python**: La herramienta debe estar optimizada para proyectos Python, permitiendo la automatización sin dependencias adicionales.  
 
 ## Razones para elegir Poetry como gestor de tareas
 
-- **Integración con `pyproject.toml`**: Poetry permite centralizar las configuraciones y scripts de automatización directamente en el archivo `pyproject.toml`, lo que simplifica la administración del proyecto y evita la necesidad de archivos adicionales.  
-
+- **Centralización en `pyproject.toml`**: `Poetry` permite definir configuraciones y scripts de automatización directamente en el archivo `pyproject.toml`, manteniendo una estructura de proyecto ordenada sin la necesidad de archivos adicionales como `Makefile`.
 - **Automatización de tareas**: Poetry permite definir y ejecutar comandos personalizados de manera sencilla, como ejecutar pruebas (`poetry run pytest`) o verificar el estilo de código (`poetry run flake8`). Esto elimina la necesidad de herramientas adicionales como `Make` o `Invoke`.  
-
-- **Eficiencia en proyectos Python**: Al estar diseñado específicamente para trabajar con proyectos Python, Poetry optimiza el flujo de trabajo sin la necesidad de depender de herramientas externas o configuraciones adicionales.  
+- **Eficiencia en proyectos Python**: Al estar diseñado específicamente para trabajar con proyectos Python, `Poetry` optimiza el flujo de trabajo sin la necesidad de depender de herramientas externas o configuraciones adicionales.  
 
 ## Comparación con otras herramientas
 
