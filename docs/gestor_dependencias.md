@@ -1,16 +1,16 @@
 # Gestor de Dependencias
 
-Para la gestión de dependencias en este proyecto de Python, he optado por **Poetry**, un gestor moderno y ampliamente adoptado en la comunidad. A continuación, explico las razones por las que `Poetry` es la mejor opción para este proyecto.  
+Para la gestión de dependencias en este proyecto de Python, he evaluado las opciones disponibles y he optado por **Poetry**. Basé mi selección en los siguientes criterios específicos que necesita el proyecto:  
+
+- **Control de versiones preciso y reproducibilidad**: El proyecto requiere consistencia en las versiones de dependencias para evitar conflictos en distintos entornos.  
+- **Gestión de entornos virtuales integrada**: Necesitamos que el gestor permita crear y manejar entornos virtuales sin necesidad de herramientas adicionales.  
+- **Centralización de configuraciones**: Dado que la configuración de dependencias y del proyecto debe estar en un solo archivo, preferimos herramientas compatibles con el estándar `pyproject.toml`.  
 
 ## Razones para elegir Poetry
 
-- **Compatibilidad con `pyproject.toml`**: Poetry se basa en el estándar `pyproject.toml` para gestionar tanto las dependencias como la configuración del proyecto. Esto facilita su integración con herramientas y entornos modernos de Python.  
-  
-- **Control preciso de versiones de dependencias**: Con Poetry, se genera automáticamente un archivo `poetry.lock`, lo que garantiza la consistencia en las versiones de las dependencias entre distintos entornos, evitando así posibles conflictos.  
-  
-- **Gestión integrada de entornos virtuales**: Poetry facilita la creación y el manejo de entornos virtuales, lo que permite una clara separación entre proyectos y simplifica la instalación de dependencias.  
-  
-- **Actualización y gestión sencilla**: Con comandos como `poetry add` y `poetry update`, Poetry permite instalar nuevas dependencias y actualizar las existentes de manera eficiente, siempre asegurando la compatibilidad con las versiones más recientes.  
+- **Control de versiones preciso**: `Poetry` genera automáticamente un archivo `poetry.lock`, lo cual garantiza que cada colaborador utilice exactamente las mismas versiones de dependencias, evitando conflictos entre entornos.  
+- **Gestión de entornos virtuales**: `Poetry` facilita la creación y el manejo de entornos virtuales, lo cual asegura una separación limpia entre proyectos.  
+- **Compatibilidad con `pyproject.toml`**: Al utilizar `pyproject.toml` como archivo de configuración central, `Poetry` simplifica la administración del proyecto y evita la necesidad de otros archivos.   
 
 ## Comparación con otras herramientas
 
