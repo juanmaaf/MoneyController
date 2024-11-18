@@ -23,33 +23,3 @@ python = "^3.8"
 flake8 = "^5.0.0"   # Verificación Sintaxis
 black = "^23.0.0"   # Formateo de código
 pytest = "^7.0.0"   # Pruebas
-
-[tasks.check_syntax]
-command = "flake8"
-args = ["--max-line-length=88"]
-
-[tasks.check_style]
-command = "black"
-args = ["--check", "--line-length", "88"]
-
-[tasks.format_code]
-command = "black"
-args = ["--line-length", "88"]
-
-[tasks.test]
-command = "pytest"
-args = ["--maxfail=5", "--disable-warnings", "--tb=short"]
-
-[tasks.build]
-command = "poetry"
-args = ["build"]
-
-[tasks.clean]
-command = "poetry"
-args = ["env", "remove", "python"]
-
-[tasks.full]
-dependencies = ["check_syntax", "check_style", "build", "test"]
-
-[tasks.clean-full]
-dependencies = ["clean", "full"]
