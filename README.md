@@ -36,8 +36,7 @@ Se han definido los siguientes milestones:
 - Gestor de dependencias: `Poetry`. [Más información](/docs/gestor_dependencias.md)
 
 - Gestor de tareas: `Poetry` (utilizado también como gestor de tareas). [Más información](/docs/gestor_tareas.md)
-    - Si no está instalado, su instalación es muy simple y basta con ejecutar el siguiente comando:
-    `curl -sSL https://install.python-poetry.org | python3 -`
+    - Si no está instalado, su instalación es muy simple y basta con seguir las indicaciones de la página oficial: `https://python-poetry.org/docs/#installing-with-the-official-installer`.  
     
     - Para instalar las dependencias del proyecto realizamos:
     `poetry install`
