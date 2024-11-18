@@ -35,33 +35,32 @@ Se han definido los siguientes milestones:
 
 - Gestor de dependencias: `Poetry`. [Más información](/docs/gestor_dependencias.md)
 
-- Gestor de tareas: `Poetry` (utilizado también como gestor de tareas). [Más información](/docs/gestor_tareas.md)
-    - Si no está instalado, su instalación es muy simple y basta con seguir las indicaciones de la página oficial: `https://python-poetry.org/docs/#installing-with-the-official-installer`.  
+- Gestor de tareas: `Make`. [Más información](/docs/gestor_tareas.md)
     
     - Para instalar las dependencias del proyecto realizamos:
-    `poetry install`
+    `make install`
 
-    - Para verificar la configuración de Poetry (comprobar si hay errores en la configuración del proyecto) utilizamos:
-    `poetry check`
+    - Para verificar la configuración del proyecto y sus dependencias:
+    `make check`
 
     - Para formatear el código y corregir la sintaxis (utilizando `black`) realizamos:
-    `poetry run format_code`
+    `make format`
 
     - Para comprobar la sintaxis de los archivos (utilizando `flake8` en este caso) realizamos:
-    `poetry run check_syntax`
+    `make lint`
 
     - Para comprobar el estilo del código (utilizando `black`) realizamos:
-    `poetry run check_style`
+    `make style`
 
     - Para limpiar los archivos generados en la construcción del proyecto (eliminando entornos virtuales y archivos temporales) realizamos:
-    `poetry run clean`
+    `make clean`
 
     - Para ejecutar las pruebas (utilizando `pytest`) realizamos:
-    `poetry run test`
+    `make test`
 
     - Para construir el proyecto (por ejemplo, empaquetarlo para distribución) realizamos:
-    `poetry run build`
+    `make build`
 
-    - Con `poetry run full` corregimos la sintaxis, verificamos el estilo, compilamos el proyecto y ejecutamos las pruebas.
+    - Con `make full` se ejecutan todas las tareas de forma secuencial (formateo, verificación de sintaxis, verificación de estilo, pruebas y construcción).
 
-    - Con `poetry run clean-full` realizamos todo lo anterior, pero primero limpiamos los archivos de compilación.
+    - Con `make clean-full` realizamos todo lo anterior, pero primero limpiamos los archivos de compilación.
