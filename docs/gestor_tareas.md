@@ -1,23 +1,30 @@
 # Gestor de Tareas
 
-Para la automatización de tareas en este proyecto de Python, he evaluado distintas opciones y he optado por **Poetry**. Esta elección se basa en varios criterios específicos necesarios para el proyecto:
+Para la automatización de tareas en este proyecto de Python, he evaluado distintas opciones disponibles.  Aquí detallo los criterios específicos que se establecieron antes de realizar la elección, para luego seleccionar la herramienta que mejor cumple con los objetivos del proyecto.  
 
-- **Centralización de configuraciones**: El proyecto requiere que la configuración de tareas y scripts se centralice en un solo archivo, idealmente en `pyproject.toml`, para una administración más simple.  
-- **Automatización de tareas personalizada**: Necesitamos una herramienta que permita definir y ejecutar tareas como pruebas y verificación de estilo de código sin necesidad de archivos adicionales.  
-- **Eficiencia para proyectos Python**: La herramienta debe estar optimizada para proyectos Python, permitiendo la automatización sin dependencias adicionales.  
+- **Centralización de configuraciones**: La herramienta debe permitir definir todas las tareas en un solo archivo o estructura centralizada para facilitar la gestión y mantenimiento.  
+- **Automatización de tareas personalizada**: Debe permitir la definición y automatización de tareas específicas, como pruebas y verificación de estilo de código, además de gestionar dependencias entre tareas.  
+- **Compatibilidad con `pyproject.toml`**: Debe integrarse adecuadamente con el archivo `pyproject.toml` para una configuración unificada dentro del ecosistema Python.  
 
-## Razones para elegir Poetry como gestor de tareas
+## Comparación de Herramientas
 
-- **Centralización en `pyproject.toml`**: `Poetry` permite definir configuraciones y scripts de automatización directamente en el archivo `pyproject.toml`, manteniendo una estructura de proyecto ordenada sin la necesidad de archivos adicionales como `Makefile`.
-- **Automatización de tareas**: Poetry permite definir y ejecutar comandos personalizados de manera sencilla, como ejecutar pruebas (`poetry run pytest`) o verificar el estilo de código (`poetry run flake8`). Esto elimina la necesidad de herramientas adicionales como `Make` o `Invoke`.  
-- **Eficiencia en proyectos Python**: Al estar diseñado específicamente para trabajar con proyectos Python, `Poetry` optimiza el flujo de trabajo sin la necesidad de depender de herramientas externas o configuraciones adicionales.  
+Para gestionar dependencias en este proyecto, se evaluaron tres herramientas populares: Invoke, Make, y Pipenv. La comparación se basa en los criterios específicos establecidos.
 
-## Comparación con otras herramientas
+1. **Invoke**: 
+   - **Centralización**: Las tareas se definen en un archivo Python (`tasks.py`), lo que facilita la organización y el mantenimiento.  
+   - **Automatización**: Permite la automatización de tareas personalizadas de manera flexible usando Python. Ideal para tareas como pruebas, verificación de estilo, y más.
+   - **Compatibilidad con `pyproject.toml`**: No tiene integración directa con pyproject.toml, pero se puede usar junto con otras herramientas de automatización, como `tox`.   
 
-- **Make**: Aunque `Make` es una herramienta poderosa y flexible, no está diseñada específicamente para proyectos Python, lo que implica la necesidad de crear y mantener un archivo `Makefile` adicional. Con Poetry, todas las tareas pueden centralizarse directamente en `pyproject.toml`, simplificando el proceso.  
+2. **Make**: 
+   - **Centralización**: Utiliza el tradicional `Makefile` para definir tareas, lo que centraliza la configuración de las tareas. 
+   - **Automatización**: Muy flexible y potente, ideal para proyectos con tareas complejas y dependencias. Utiliza una sintaxis simple y clara para definir las reglas de ejecución.
+   - **Compatibilidad con `pyproject.toml`**: No es nativa de Python, pero se puede integrar bien en proyectos Python. Es común usarla junto con otras herramientas de Python como `tox` para gestionar tareas automatizadas y pruebas.
 
-- **Invoke**: Aunque `Invoke` es otro gestor de tareas popular en Python, añade una dependencia adicional que no es necesaria cuando se utiliza Poetry. Poetry cubre todas las necesidades de automatización de tareas para este proyecto de manera eficiente y directa.  
+3. **Pipenv**: 
+   - **Centralización**: Gestiona dependencias y entornos a través de `pyproject.toml`.  
+   - **Automatización**: Limitada a ejecutar comandos simples como pipenv run, pero no está orientada a tareas complejas ni automatización personalizada.  
+   - **Compatibilidad con `pyproject.toml`**: Totalmente compatible para la gestión de dependencias y entornos virtuales, pero no es adecuada para la automatización de tareas.  
 
 ## Conclusión
 
-**Poetry** es la opción ideal para la automatización de tareas en este proyecto, ya que permite gestionar tareas y comandos sin necesidad de herramientas adicionales, mejorando la eficiencia del flujo de trabajo y centralizando la configuración en un único archivo.  
+**Make** es la opción recomendada, ya que, aunque no es específica para Python, es flexible, compatible con `pyproject.toml` y permite una integración sencilla con otras herramientas de Python como `tox`.
