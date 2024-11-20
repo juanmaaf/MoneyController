@@ -3,14 +3,3 @@ entidad: money_controller/gasto.py
 automatizar:
   fichero: "Makefile"
   orden: "make"
-  tareas:
-    - install: "Instala todas las dependencias usando Poetry."
-    - check: "Verifica la configuración del proyecto con Poetry."
-    - format: "Formatea el código con black."
-    - lint: "Verifica la sintaxis del código con flake8."
-    - style: "Verifica el estilo del código con black."
-    - clean: "Limpia los archivos temporales y compilados (como .pyc y __pycache__)."
-    - test: "Ejecuta las pruebas con pytest."
-    - build: "Construye el proyecto con Poetry."
-    - full: "Ejecuta todas las tareas: formateo, verificación de sintaxis, verificación de estilo, pruebas y construcción."
-    - clean-full: "Limpia el proyecto y luego ejecuta todas las tareas anteriores."
