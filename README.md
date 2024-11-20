@@ -40,27 +40,8 @@ Se han definido los siguientes milestones:
     - Para instalar las dependencias del proyecto realizamos:
     `make install`
 
-    - Para verificar la configuración del proyecto y sus dependencias:
+    - Para verificar que el código compila correctamente:
     `make check`
 
-    - Para formatear el código y corregir la sintaxis (utilizando `black`) realizamos:
-    `make format`
-
-    - Para comprobar la sintaxis de los archivos (utilizando `flake8` en este caso) realizamos:
-    `make lint`
-
-    - Para comprobar el estilo del código (utilizando `black`) realizamos:
-    `make style`
-
-    - Para limpiar los archivos generados en la construcción del proyecto (eliminando entornos virtuales y archivos temporales) realizamos:
+    - Para limpiar los archivos generados en la construcción del proyecto (eliminando archivos temporales) realizamos:
     `make clean`
-
-    - Para ejecutar las pruebas (utilizando `pytest`) realizamos:
-    `make test`
-
-    - Para construir el proyecto (por ejemplo, empaquetarlo para distribución) realizamos:
-    `make build`
-
-    - Con `make full` se ejecutan todas las tareas de forma secuencial (formateo, verificación de sintaxis, verificación de estilo, pruebas y construcción).
-
-    - Con `make clean-full` realizamos todo lo anterior, pero primero limpiamos los archivos de compilación.
