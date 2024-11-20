@@ -18,8 +18,3 @@ authors = ["Juan Manuel Aneas Franco <e.juanmanuelaf@go.ugr.es>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
-
-[tool.poetry.dev-dependencies]
-flake8 = "^5.0.0"   # Verificación Sintaxis
-black = "^23.0.0"   # Formateo de código
-pytest = "^7.0.0"   # Pruebas
