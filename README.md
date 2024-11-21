@@ -33,7 +33,7 @@ Se han definido los siguientes milestones:
 
 - Lenguaje de programación: `Python`
 
-- Gestor de dependencias: `Poetry`. [Más información](/docs/gestor_dependencias.md)
+- Gestor de dependencias: `UV`. [Más información](/docs/gestor_dependencias.md)
 
 - Gestor de tareas: `Make`. [Más información](/docs/gestor_tareas.md)
     
