@@ -9,7 +9,7 @@ Para la gestión de dependencias en este proyecto de Python, he evaluado las opc
 
 ## Comparación de Herramientas
 
-Para gestionar dependencias en este proyecto, se evaluaron tres herramientas populares que cumplen con los requisitos mínimos: Poetry, PDM, y Hatch. La comparación se basa en los criterios específicos establecidos.  
+Para gestionar dependencias en este proyecto, se evaluaron cuatro herramientas: Poetry, PDM, Hatch y UV. La comparación se basa en los criterios específicos establecidos.  
 
 1. **Poetry**:  
    - **Adaptación a proyectos simples**: Ofrece un flujo de trabajo simple e intuitivo con comandos claros como poetry init para inicializar un proyecto y poetry add para agregar dependencias.  
