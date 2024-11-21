@@ -2,9 +2,11 @@
 
 Para la automatización de tareas en este proyecto de Python, he evaluado distintas opciones disponibles.  Aquí detallo los criterios específicos que se establecieron antes de realizar la elección, para luego seleccionar la herramienta que mejor cumple con los objetivos del proyecto.  
 
+- **Compatibilidad con `pyproject.toml`**: Debe integrarse adecuadamente con el archivo `pyproject.toml` para una configuración unificada dentro del ecosistema Python. Es un requisito mínimo.  
 - **Centralización de configuraciones**: La herramienta debe permitir definir todas las tareas en un solo archivo o estructura centralizada para facilitar la gestión y mantenimiento.  
 - **Automatización de tareas personalizada**: Debe permitir la definición y automatización de tareas específicas, como pruebas y verificación de estilo de código, además de gestionar dependencias entre tareas.  
-- **Compatibilidad con `pyproject.toml`**: Debe integrarse adecuadamente con el archivo `pyproject.toml` para una configuración unificada dentro del ecosistema Python.  
+- **Proyectos simples**: La herramienta debe estar preparada para gestionar proyectos simples, dado que el problema que se resuelve en este repositorio es bastante simple.
+
 
 ## Comparación de Herramientas
 
@@ -12,19 +14,19 @@ Para gestionar dependencias en este proyecto, se evaluaron tres herramientas pop
 
 1. **Invoke**: 
    - **Centralización**: Las tareas se definen en un archivo Python (`tasks.py`), lo que facilita la organización y el mantenimiento.  
-   - **Automatización**: Permite la automatización de tareas personalizadas de manera flexible usando Python. Ideal para tareas como pruebas, verificación de estilo, y más.
-   - **Compatibilidad con `pyproject.toml`**: No tiene integración directa con pyproject.toml, pero se puede usar junto con otras herramientas de automatización, como `tox`.   
+   - **Automatización**: Permite la automatización de tareas personalizadas de manera flexible usando Python. Ideal para tareas como pruebas, verificación de estilo, y más.  
+   - **Adaptación a proyectos simples**: Aunque es poderoso, requiere cierta configuración inicial y programación en Python, lo que puede ser excesivo para tareas básicas. 
 
 2. **Make**: 
    - **Centralización**: Utiliza el tradicional `Makefile` para definir tareas, lo que centraliza la configuración de las tareas. 
-   - **Automatización**: Muy flexible y potente, ideal para proyectos con tareas complejas y dependencias. Utiliza una sintaxis simple y clara para definir las reglas de ejecución.
-   - **Compatibilidad con `pyproject.toml`**: No es nativa de Python, pero se puede integrar bien en proyectos Python. Es común usarla junto con otras herramientas de Python como `tox` para gestionar tareas automatizadas y pruebas.
+   - **Automatización**: Muy flexible y potente, ideal para proyectos con tareas complejas y dependencias. Utiliza una sintaxis simple y clara para definir las reglas de ejecución.  
+   - **Adaptación a proyectos simples**: Es ideal para tareas básicas y no requiere configuraciones avanzadas ni dependencias externas.  
 
 3. **Pipenv**: 
-   - **Centralización**: Gestiona dependencias y entornos a través de `pyproject.toml`.  
+   - **Centralización**: No centraliza tareas automatizadas; se enfoca en la gestión de dependencias y entornos virtuales, pero no gestiona tareas personalizadas.      
    - **Automatización**: Limitada a ejecutar comandos simples como pipenv run, pero no está orientada a tareas complejas ni automatización personalizada.  
-   - **Compatibilidad con `pyproject.toml`**: Totalmente compatible para la gestión de dependencias y entornos virtuales, pero no es adecuada para la automatización de tareas.  
-
+   - **Adaptación a proyectos simples**:  Adecuado para gestionar dependencias y entornos en proyectos pequeños, pero no cubre la automatización de tareas, lo que lo limita para este tipo de proyectos.   
+   
 ## Conclusión
 
-**Make** es la opción recomendada, ya que, aunque no es específica para Python, es flexible, compatible con `pyproject.toml` y permite una integración sencilla con otras herramientas de Python como `tox`.
+**Make** es la opción más adecuada para gestionar tareas en proyectos simples, debido a su simplicidad, centralización de configuraciones y facilidad de integración con el ecosistema Python.  
