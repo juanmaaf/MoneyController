@@ -3,7 +3,7 @@
 
 # Instalar dependencias usando Poetry
 install:
-	poetry install
+	uv install
 
 # Verificar si el código compila correctamente
 check:
