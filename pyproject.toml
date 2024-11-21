@@ -10,11 +10,4 @@ readme = "README.md"
 license = { text = "MIT" }
 requires-python = ">=3.8"
 
-[tool.poetry]
-name = "money_controller"
-version = "0.1.0"
-description = "Sistema de gestión de gastos - Poetry"
-authors = ["Juan Manuel Aneas Franco <e.juanmanuelaf@go.ugr.es>"]
-
-[tool.poetry.dependencies]
-python = "^3.8"
+[tool.uv]
