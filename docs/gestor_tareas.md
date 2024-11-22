@@ -26,7 +26,7 @@ Para gestionar dependencias en este proyecto, se evaluaron tres herramientas pop
    [Fabric](https://github.com/fabric/fabric)   
    - **Automatización**: Ideal para ejecutar tareas de automatización remota, como despliegues y administración de servidores. Permite definir tareas en Python.  
    - **Complejidad**: Está más orientado a tareas de administración remota, lo que lo hace innecesariamente complejo para tareas locales simples.  
-   - **Actualizaciones**: El proyecto de `Invoke` ha tenido una disminución en su actividad, con la última actualización significativa en 2023.  
+   - **Actualizaciones**: El proyecto de `Fabric` ha tenido una disminución en su actividad, con la última actualización significativa en 2023.  
    
 ## Conclusión
 
