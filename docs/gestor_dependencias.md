@@ -1,8 +1,9 @@
 # Gestor de Dependencias
+En el desarrollo del anterior objetivo, se usó el archivo `pyproject.toml` como archivo de configuración del proyecto para poder seguir las buenas prácticas del lenguaje. Usar este archivo sigue las buenas prácticas del leguaje ya que desde las siguientes Propuestas de Mejora de Python (PEP) se llega al acuerdo de usarlo: [PEP 517](https://peps.python.org/pep-0517/) y el [PEP 518](https://peps.python.org/pep-0518/).
 
 Para la gestión de dependencias en este proyecto de Python, he evaluado las opciones disponibles.  Aquí detallo los criterios específicos que se establecieron antes de realizar la elección, para luego seleccionar la herramienta que mejor cumple con los objetivos del proyecto.  
 
-- **Compatibilidad con el estándar `pyproject.toml`**: En el desarrollo del anterior objetivo, se usó el archivo `pyproject.toml` como archivo de configuración del proyecto para poder seguir las buenas prácticas del lenguaje. Por tanto, la herramienta elegida como gestor de dependencias debe usar `pyproject.toml` como archivo de configuración, facilitando la centralización y estandarización de las dependencias del proyecto. Es un requisito mínimo.  
+- **Compatibilidad con el estándar `pyproject.toml`**: La herramienta elegida como gestor de dependencias debe usar `pyproject.toml` como archivo de configuración, facilitando la centralización y estandarización de las dependencias del proyecto. Es un requisito mínimo.    
 - **Rapidez operativa**: La herramienta debe ser lo más rápida posible para instalar dependencias de manera eficiente y con un impacto mínimo en el flujo de desarrollo.  
 - **Mantenimiento y comunidad**: La herramienta debe tener soporte activo, actualizaciones regulares y una comunidad activa que pueda responder dudas. Podemos comprobar este criterio en la página de Snyk Advisor de cada herramienta.
 
@@ -36,4 +37,4 @@ Para gestionar dependencias en este proyecto, se evaluaron cuatro herramientas: 
 
 ## Conclusión
 
-**UV** es la herramienta ideal para este proyecto gracias principalmente a su alta velocidad, su compatibilidad con `pyproject.toml`, requisito mínimo, y al gran mantenimiento y comunidad en crecimiento que tiene al tratarse de una herramienta relativamente nueva y moderna.  
+En primer lugar, descarto Hatch por ser el más lento al estar orientado a proyectos complejos. Entre Poetry, PDM y UV, herramientas compatibles con `pyproyect.toml`, rápidas y con mantenimiento activo, elijo finalmente **UV** ya que es el más rápido. Podemos justificar esta afirmación apoyándonos en los benckmarks que publica UV en su página de GitHUB, donde se compara con Poetry y PDM. [Benckmarks](https://github.com/astral-sh/uv/blob/main/BENCHMARKS.md)  
