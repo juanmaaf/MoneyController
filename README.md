@@ -42,6 +42,3 @@ Se han definido los siguientes milestones:
 
     - Para verificar que el código compila correctamente:
     `make check`
-
-    - Para limpiar los archivos generados en la construcción del proyecto (eliminando archivos temporales) realizamos:
-    `make clean`
