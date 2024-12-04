@@ -2,7 +2,7 @@
 
 Para la automatización de tareas en este proyecto de Python, he evaluado distintas opciones disponibles.  Aquí detallo los criterios específicos que se establecieron antes de realizar la elección, para luego seleccionar la herramienta que mejor cumple con los objetivos del proyecto.  
 
-- **Archivo de configuración**: La herramienta debe centralizar la configuración de las tareas en un único archivo específico.  
+- **Archivo de configuración específico**: La herramienta debe centralizar la configuración de las tareas en un único archivo específico.  
 - **Mantenimiento y comunidad**: La herramienta debe tener soporte activo, actualizaciones regulares y una comunidad activa que pueda responder dudas. Podemos comprobar este criterio en la página de Snyk Advisor de cada herramienta o en la página de GitHub viendo el número de PR, issues y las últimas versiones disponibles. 
 
 ## Comparación de Herramientas
