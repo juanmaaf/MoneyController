@@ -28,3 +28,17 @@ Se han definido los siguientes milestones:
 2. [M1] - Algoritmo de Gastos 
 
 [Milestones](/docs/milestones.md)  
+
+# Herramientas utilizadas
+
+- Lenguaje de programación: `Python`
+
+- Gestor de dependencias: `UV`. [Más información](/docs/gestor_dependencias.md)
+
+- Gestor de tareas: `Make`. [Más información](/docs/gestor_tareas.md)
+    
+    - Para instalar las dependencias del proyecto realizamos:
+    `make install`
+
+    - Para verificar que el código compila correctamente:
+    `make check`
