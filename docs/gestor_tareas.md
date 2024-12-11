@@ -7,7 +7,7 @@ Para la automatización de tareas en este proyecto de Python, he evaluado distin
 
 ## Comparación de Herramientas
 
-Para gestionar dependencias en este proyecto, se evaluaron cuatro herramientas populares: Invoke, Make, Task y Just. Además, se considerará la opción de gestionar las tareas mediante scripts de Python. La comparación se basa en los criterios específicos establecidos.
+Para gestionar dependencias en este proyecto, se evaluaron cuatro herramientas populares: Invoke, Make, Task y Just. Además, se considerará la opción de gestionar las tareas mediante scripts de Python. La comparación se basa en los criterios específicos establecidos.  
 
 1. **Invoke**: 
    [Invoke](https://github.com/pyinvoke/invoke) 
