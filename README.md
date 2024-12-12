@@ -48,3 +48,6 @@ Se han definido los siguientes milestones:
 
     - Para verificar que el código compila correctamente:
     `make check`
+
+    - Para ejecutar los test realizamos:
+    `make test`
