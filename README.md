@@ -29,6 +29,12 @@ Se han definido los siguientes milestones:
 
 [Milestones](/docs/milestones.md)  
 
+## Biblioteca de Aserciones y Test Runner
+
+- Biblioteca de aserciones: `Unittest`. [Más información](/docs/biblioteca_aserciones.md)
+
+- Test Runner: `Pytest`. [Más información](/docs/test_runner.md)  
+
 # Herramientas utilizadas
 
 - Lenguaje de programación: `Python`
