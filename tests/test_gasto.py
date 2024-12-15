@@ -9,6 +9,7 @@ from money_controller.presupuesto import actualizar_monto_total
 from money_controller.presupuesto import procesar_gasto
 from money_controller.presupuesto import procesar_atributos
 from money_controller.presupuesto import procesar_datos
+from money_controller.presupuesto import puede_permitirse_gasto_adicional
 
 class TestGasto(unittest.TestCase):
     def test_leer_archivo_inexistente(self):
@@ -153,6 +154,36 @@ class TestGasto(unittest.TestCase):
         
         total_gastos = sum(gasto.importe for gasto in presupuesto.gastos_fijos) + sum(gasto.importe for gasto in presupuesto.gastos_variables)
         self.assertEqual(presupuesto.monto_total, sum(presupuesto.ingresos) - total_gastos)
+    
+    def test_puede_permitirse_gasto_adicional(self):
+        presupuesto = Presupuesto(monto_total=0)
+        presupuesto.ingresos = [3000, 500]
+        presupuesto.gastos_fijos = [Gasto(fecha=datetime(2024, 1, 1), concepto="Alquiler", importe=226.67, categoria=CategoriaGasto.FIJO)]
+        presupuesto.gastos_variables = [Gasto(fecha=datetime(2024, 1, 1), concepto="Comida", importe=50, categoria=CategoriaGasto.VARIABLE)]
+        presupuesto.meta_ahorro = 500
+        
+        actualizar_monto_total(presupuesto)
+        
+        gasto_adicional = 100
+        puede_permitirse = puede_permitirse_gasto_adicional(presupuesto, gasto_adicional)
+        
+        self.assertTrue(puede_permitirse)
+        self.assertEqual(presupuesto.gasto_no_planificado, 100)
+        
+    def test_no_permitir_gasto_adicional(self):
+        presupuesto = Presupuesto(monto_total=0)
+        presupuesto.ingresos = [1000, 200]
+        presupuesto.gastos_fijos = [Gasto(fecha=datetime(2024, 1, 1), concepto="Alquiler", importe=800, categoria=CategoriaGasto.FIJO)]
+        presupuesto.gastos_variables = [Gasto(fecha=datetime(2024, 1, 1), concepto="Comida", importe=300, categoria=CategoriaGasto.VARIABLE)]
+        presupuesto.meta_ahorro = 500
+        
+        actualizar_monto_total(presupuesto)
+
+        gasto_adicional = 100
+        puede_permitirse = puede_permitirse_gasto_adicional(presupuesto, gasto_adicional)
+        
+        self.assertFalse(puede_permitirse)
+        self.assertIsNone(presupuesto.gasto_no_planificado)
 
 if __name__ == "__main__":
     unittest.main()
