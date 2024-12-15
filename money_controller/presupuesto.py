@@ -7,6 +7,7 @@ from money_controller.categoriaGasto import CategoriaGasto
 @dataclass
 class Presupuesto:
     monto_total: float
+    meta_ahorro: float
     gastos_fijos: List[Gasto] = field(default_factory=list)
     gastos_variables: List[Gasto] = field(default_factory=list)
     ingresos: List[float] = field(default_factory=list)
