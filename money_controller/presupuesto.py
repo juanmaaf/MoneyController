@@ -41,6 +41,7 @@ def procesar_gasto(presupuesto, gastos_vistos, concepto, categoria_str, importe,
     if clave_gasto in gastos_vistos:
         for gasto in presupuesto.gastos_variables:
             if gasto.concepto == concepto and gasto.importe == importe and gasto.categoria == CategoriaGasto.VARIABLE:
+                gasto.categoria=CategoriaGasto.FIJO
                 presupuesto.gastos_variables.remove(gasto)
                 presupuesto.gastos_fijos.append(gasto)
         gasto = Gasto(fecha=fecha, concepto=concepto, importe=importe, categoria=CategoriaGasto.FIJO)
