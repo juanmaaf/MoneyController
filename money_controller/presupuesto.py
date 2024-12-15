@@ -60,7 +60,9 @@ def procesar_datos(ruta_archivo):
     presupuesto = Presupuesto(monto_total=0)
     gastos_vistos = {}
 
-    for linea in lineas:
+    for i, linea in enumerate(lineas):
+        if i == 0: 
+            continue
         atributos = linea.strip().split(",")
         if len(atributos) != 5:
             continue
