@@ -2,7 +2,7 @@ from money_controller.gasto import Gasto
 from dataclasses import dataclass, field
 from typing import List, Optional
 from datetime import datetime
-from categoriaGasto import CategoriaGasto
+from money_controller.categoriaGasto import CategoriaGasto
 
 @dataclass
 class Presupuesto:
