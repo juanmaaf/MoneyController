@@ -7,7 +7,7 @@ from money_controller.categoriaGasto import CategoriaGasto
 @dataclass
 class Presupuesto:
     monto_total: float
-    meta_ahorro: float
+    meta_ahorro: float = None
     gastos_fijos: List[Gasto] = field(default_factory=list)
     gastos_variables: List[Gasto] = field(default_factory=list)
     ingresos: List[float] = field(default_factory=list)
@@ -82,3 +82,14 @@ def procesar_datos(ruta_archivo):
 
     actualizar_monto_total(presupuesto)
     return presupuesto
+
+def puede_permitirse_gasto_adicional(presupuesto, importe_adicional: float) -> bool:
+    total_gastos = sum(gasto.importe for gasto in presupuesto.gastos_fijos) + sum(gasto.importe for gasto in presupuesto.gastos_variables)
+    
+    ingreso_disponible = sum(presupuesto.ingresos) - total_gastos - presupuesto.meta_ahorro
+    
+    if ingreso_disponible >= importe_adicional:
+        presupuesto.gasto_no_planificado = importe_adicional
+        return True
+    else:
+        return False
