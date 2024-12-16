@@ -4,7 +4,7 @@ Para la elección de la biblioteca de aserciones, he buscado y evaluado las dist
 
 - Se considerarán las herramientas que tengan una buena puntuación en [Snyk Advisor](https://snyk.io/advisor/).
 - Se considerarán las herramientas que tengan soporte activo. Podemos verificarlo viendo en las páginas de [Snyk Advisor](https://snyk.io/advisor/) y [PyPi](https://pypi.org/) si las últimas versiones disponibles de cada herramienta son recientes.  
-- Se considerará que la herramienta ofrezca una amplia gama de opciones para realizar diferentes tipos de aserciones.  
+- Se considerará que la herramienta ofrezca una amplia gama de opciones para realizar diferentes tipos de aserciones. Esto evitará deuda técnica innecesaria en el futuro, permitiendo escribir pruebas específicas.  
 - Se considerará si existe un estándar en el lenguaje de programación.   
 
 # Comparación de Herramientas
