@@ -3,9 +3,9 @@
 Para la elección de la biblioteca de aserciones, he buscado y evaluado las distintas alternativas posibles. He buscado herramientas en [Snyk Advisor](https://snyk.io/advisor/) y en foros de Reddit como [Is there life beyond PyUnit/PyTest?](https://www.reddit.com/r/Python/comments/1gbxrho/anyone_working_on_or_with_a_great_but_littleknown/) y [Anyone working on or with a great but little-known test framework? ](https://www.reddit.com/r/Python/comments/1gbxrho/anyone_working_on_or_with_a_great_but_littleknown/). A continuación detallo los criterios específicos que he tenido en cuenta para la elección de la herramienta. 
 
 - Se considerarán las herramientas que tengan una buena puntuación en [Snyk Advisor](https://snyk.io/advisor/).
-- Se considerarán las herramientas que tengan soporte activo. Podemos verificarlo viendo en las páginas de [Snyk Advisor](https://snyk.io/advisor/) y [PyPi](https://pypi.org/) si las últimas versiones disponibles de cada herramienta son recientes.  
-- Se considerará que la herramienta ofrezca una amplia gama de opciones para realizar diferentes tipos de aserciones. Esto evitará deuda técnica innecesaria en el futuro, permitiendo escribir pruebas específicas.  
-- Se considerará si existe un estándar en el lenguaje de programación.   
+- Se considerarán las herramientas que tengan actualizaciones recientes valorando este criterio en función del número de actualizaciones de Python que han pasado hasta que la herramienta se haya actualizado. Podemos verificarlo viendo en las páginas de [Snyk Advisor](https://snyk.io/advisor/) y [PyPi](https://pypi.org/) si las últimas versiones disponibles de cada herramienta son recientes. Podemos ver las actualizaciones de Python en su documentación oficial [Actualizaciones Python](https://www.python.org/doc/versions/).
+- Se considerará que la herramienta ofrezca una amplia gama de opciones para realizar diferentes tipos de aserciones, como los tipos (igualdad, veracidad, mayor/menor, etc.), aserciones específicas de excepciones, o enfoques BDD (como should o expect). Esto evitará deuda técnica innecesaria en el futuro, permitiendo escribir pruebas específicas.  
+- Se considerará si existe una biblioteca de aserciones en el lenguaje de programación. En este caso, que esté en la biblioteca de Python.   
 
 # Comparación de Herramientas
 
@@ -21,22 +21,22 @@ Para la elección de la biblioteca de aserciones, he buscado y evaluado las dist
 3. **Grappa**:
     [Snyk Advisor](https://snyk.io/advisor/python/grappa)  
     [PyPi](https://pypi.org/project/grappa/)  
-    Como podemos ver en su página de Snyk Advisor, tiene una baja puntuación y además su última versión se publicó hace 4 años. 
+    Como podemos ver en su página de Snyk Advisor, tiene una baja puntuación y además su última versión se publicó hace 4 años, 4 versiones de Pyhton atrás. 
 
 4. **PyHamCrest**:
     [Snyk Advisor](https://snyk.io/advisor/python/pyhamcrest)  
     [PyPi](https://pypi.org/project/PyHamcrest/)  
-    Como podemos ver en su página de Snyk Advisor, tiene una baja puntuación, lo que nos lleva a la conclusión de no tenerla en cuenta. Sí es cierto que su última versión se publicó hace un año, pero el proyecto ya se cataloga como inactivo.  
+    Como podemos ver en su página de Snyk Advisor, tiene una baja puntuación, lo que nos lleva a la conclusión de no tenerla en cuenta. Sí es cierto que su última versión se publicó hace un año, 1 versión de Python atrás, pero el proyecto ya se cataloga como inactivo.  
 
 5. **Expects**:
     [Snyk Advisor](https://snyk.io/advisor/python/expects)  
     [PyPi](https://pypi.org/project/expects/)    
-    Como podemos ver en su página de Snyk Advisor, tiene una baja puntuación y además su última versión se publicó hace 2 años.  
+    Como podemos ver en su página de Snyk Advisor, tiene una baja puntuación y además su última versión se publicó hace 2 años, 2 versiones de Python atrás.  
 
 6. **Ensure**:
     [Snyk Advisor](https://snyk.io/advisor/python/ensure)  
     [PyPi](https://pypi.org/project/ensure/)  
-    Como podemos ver en su página de Snyk Advisor, tiene una baja puntuación, lo que nos lleva a la conclusión de no tenerla en cuenta. Sí es cierto que su última versión se publicó hace un año, pero el proyecto ya se cataloga como inactivo.    
+    Como podemos ver en su página de Snyk Advisor, tiene una baja puntuación, lo que nos lleva a la conclusión de no tenerla en cuenta. Sí es cierto que su última versión se publicó hace un año, 1 versión de Python atrás, pero el proyecto ya se cataloga como inactivo.    
 
 # Conclusión
 
