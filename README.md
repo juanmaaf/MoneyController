@@ -35,6 +35,8 @@ Se han definido los siguientes milestones:
 
 - Test Runner: `Pytest`. [Más información](/docs/test_runner.md)  
 
+- Herramienta CLI para ejecutar test: `Pytest`. [Más información](/docs/herramientas_cli.md)  
+
 # Herramientas utilizadas
 
 - Lenguaje de programación: `Python`
