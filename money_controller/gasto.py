@@ -10,13 +10,13 @@ class Gasto:
     Atributos:
         descripcion (str): La descripción del gasto.
         monto (float): La cantidad del gasto.
-        categoria (CategoriaGasto): La categoría del gasto, fija o variable.
         fecha (datetime): La fecha registrada del gasto
+        categoria (CategoriaGasto): La categoría del gasto, fija o variable.
     """
     descripcion: str
     monto: float
-    categoria: CategoriaGasto = CategoriaGasto
     fecha: datetime
+    categoria: CategoriaGasto = CategoriaGasto
     
     def __post_init__(self):
         if isinstance(self.fecha, str):
