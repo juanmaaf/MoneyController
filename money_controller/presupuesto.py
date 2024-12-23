@@ -22,6 +22,10 @@ class Presupuesto:
     gastos_variables: List[Gasto] = field(default_factory=list)
     ingresos: List[float] = field(default_factory=list)
     gasto_no_planificado: Optional[float] = None
+    
+    def __post_init__(self):
+        self.gastos_fijos = [gasto for gasto in self.gastos_fijos if isinstance(gasto, Gasto)]
+        self.gastos_variables = [gasto for gasto in self.gastos_variables if isinstance(gasto, Gasto)]
 
 def leer_archivo_csv(ruta_archivo):
     try:
