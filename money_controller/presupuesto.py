@@ -57,10 +57,10 @@ def procesar_gasto(presupuesto, gastos_vistos, descripcion, categoria_str, monto
                 gasto.categoria=CategoriaGasto.FIJO
                 presupuesto.gastos_variables.remove(gasto)
                 presupuesto.gastos_fijos.append(gasto)
-        gasto = Gasto(descripcion=descripcion, monto=monto, categoria=CategoriaGasto.FIJO, fecha=fecha)
+        gasto = Gasto(descripcion=descripcion, monto=monto, fecha=fecha, categoria=CategoriaGasto.FIJO)
         presupuesto.gastos_fijos.append(gasto)
     else:
-        gasto = Gasto(descripcion=descripcion, monto=monto, categoria=CategoriaGasto.VARIABLE, fecha=fecha)
+        gasto = Gasto(descripcion=descripcion, monto=monto, fecha=fecha, categoria=CategoriaGasto.VARIABLE)
         presupuesto.gastos_variables.append(gasto)
         gastos_vistos[clave_gasto] = True
 
@@ -80,7 +80,7 @@ def procesar_datos(ruta_archivo):
         if len(atributos) != 5:
             continue
         
-        descripcion, categoria_str, monto_str, tipo_movimiento, fecha_str = atributos
+        fecha_str, descripcion, categoria_str, monto_str, tipo_movimiento = atributos
         
         try:
             fecha, monto = procesar_atributos(fecha_str, monto_str)

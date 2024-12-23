@@ -55,8 +55,8 @@ class TestGasto(unittest.TestCase):
     def test_actualizar_monto_total(self):
         presupuesto = Presupuesto(monto_total=0)
         presupuesto.ingresos = [INGRESO_1, INGRESO_2]
-        presupuesto.gastos_fijos = [Gasto(descripcion="Alquiler", monto=ALQUILER_IMPORTE, categoria=CategoriaGasto.FIJO, fecha=FECHA_ALQUILER, )]
-        presupuesto.gastos_variables = [Gasto(descripcion="Comida", monto=COMIDA_IMPORTE, categoria=CategoriaGasto.VARIABLE, fecha=FECHA_COMIDA)]
+        presupuesto.gastos_fijos = [Gasto(descripcion="Alquiler", monto=ALQUILER_IMPORTE, fecha=FECHA_ALQUILER, categoria=CategoriaGasto.FIJO)]
+        presupuesto.gastos_variables = [Gasto(descripcion="Comida", monto=COMIDA_IMPORTE, fecha=FECHA_COMIDA, categoria=CategoriaGasto.VARIABLE)]
         
         actualizar_monto_total(presupuesto)
         
