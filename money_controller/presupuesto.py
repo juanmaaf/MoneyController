@@ -18,11 +18,14 @@ class Presupuesto:
 
         ingresos (List[float]): Lista de ingresos.
         
+        meta_ahorro (float): Ahorro deseado por el usuario
+        
     """
     monto_total: float
     gastos_fijos: List[Gasto] = field(default_factory=list)
     gastos_variables: List[Gasto] = field(default_factory=list)
     ingresos: List[float] = field(default_factory=list)
+    meta_ahorro: float = None
     gasto_no_planificado: Optional[float] = None
     
     def __post_init__(self):
