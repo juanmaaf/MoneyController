@@ -97,3 +97,14 @@ def procesar_datos(ruta_archivo):
 
     actualizar_monto_total(presupuesto)
     return presupuesto
+
+def puede_permitirse_gasto_adicional(presupuesto, importe_adicional: float) -> bool:
+    total_gastos = sum(gasto.monto for gasto in presupuesto.gastos_fijos) + sum(gasto.monto for gasto in presupuesto.gastos_variables)
+    
+    ingreso_disponible = sum(presupuesto.ingresos) - total_gastos - presupuesto.meta_ahorro
+    
+    if ingreso_disponible >= importe_adicional:
+        presupuesto.gasto_no_planificado = importe_adicional
+        return True
+    else:
+        return False
