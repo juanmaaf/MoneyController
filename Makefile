@@ -1,7 +1,7 @@
 .PHONY: install check clean test
 
 install:
-	uv build && uv lock
+	uv lock
 
 check:
 	python3 -m py_compile money_controller/*.py
