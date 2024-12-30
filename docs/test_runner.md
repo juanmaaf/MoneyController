@@ -4,8 +4,9 @@ Para la elección del test runner, he buscado y evaluado las distintas alternati
 He buscado herramientas en [Snyk Advisor](https://snyk.io/advisor/) y en foros de Reddit como [Is there life beyond PyUnit/PyTest?](https://www.reddit.com/r/Python/comments/1gbxrho/anyone_working_on_or_with_a_great_but_littleknown/) y [Anyone working on or with a great but little-known test framework? ](https://www.reddit.com/r/Python/comments/1gbxrho/anyone_working_on_or_with_a_great_but_littleknown/). 
 A continuación detallo los criterios específicos que he tenido en cuenta para la elección de la herramienta, similares a los establecidos para la elección de la biblioteca de aserciones. 
 
-- Se considerarán las herramientas que tengan una buena puntuación en [Snyk Advisor](https://snyk.io/advisor/).
-- Se considerarán las herramientas que tengan actualizaciones recientes valorando este criterio en función del número de actualizaciones de Python que han pasado hasta que la herramienta se haya actualizado. Podemos verificarlo viendo en las páginas de [Snyk Advisor](https://snyk.io/advisor/) y [PyPi](https://pypi.org/) si las últimas versiones disponibles de cada herramienta son recientes. Podemos ver las actualizaciones de Python en su documentación oficial [Actualizaciones Python](https://www.python.org/doc/versions/).
+- Se considerarán las herramientas que tengan una alta puntuación en [Snyk Advisor](https://snyk.io/advisor/). Esta puntuación est
+a basada en cuatro distintos criterios (Security, Popularity, Maintenance y Community). Se considerará esta puntuación como el nivel de salud de la herramienta. 
+- Se considerarán las herramientas que tengan actualizaciones recientes y estables. Para poder valorar este criterio con objetividad, tendrá en cuenta el número de versiones de Python 3.x.0 (actualización mayor que hace Python cada año), siendo la actual la 3.13.0, que se han realizado hasta que la herramienta se haya actualizado. Podemos verificarlo viendo en las páginas de [Snyk Advisor](https://snyk.io/advisor/) y [PyPi](https://pypi.org/) si las últimas versiones disponibles de cada herramienta son recientes. Podemos ver las actualizaciones de Python en su documentación oficial [Actualizaciones Python](https://www.python.org/doc/versions/).  
 - Se considerará si existe un estándar en el lenguaje de programación.   
 - Se considerará que la herramienta tenga un sistema de fixtures y proporcione salidas detalladas. 
 
@@ -14,7 +15,7 @@ A continuación detallo los criterios específicos que he tenido en cuenta para 
 1. **Pytest**:
     [Snyk Advisor](https://snyk.io/advisor/python/pytest)    
     [PyPi](https://pypi.org/project/pytest/)   
-    Pytest es uno de los test runners más populares y usados en proyectos desarrollados en Python. Ofrece soporte para fixtures y proporciona salidas detalladas. En su página de Snyk Advisor podemos ver que tiene una alta puntuación, el proyecto tiene soporte activo y presenta actualizaciones recientes, coincidiendo con la última actualización de Python.  
+    Pytest es uno de los test runners más populares y usados en proyectos desarrollados en Python. Ofrece soporte para fixtures y proporciona salidas detalladas. En su página de Snyk Advisor podemos ver que tiene una alta puntuación, el proyecto tiene soporte activo y presenta actualizaciones recientes, coincidiendo con la última versión de Python, versión 3.13.0.  
 
 2. **Unittest (PyUnit)**:
     [Página oficial Python](https://github.com/python/cpython/tree/main/Lib/unittest)  
@@ -24,7 +25,7 @@ A continuación detallo los criterios específicos que he tenido en cuenta para 
 3. **Nose2**:
     [Snyk Advisor](https://snyk.io/advisor/python/nose2)    
     [PyPi](https://pypi.org/project/nose2/)    
-    Nose2 es una extensión de Unittest e incluye características que lo hacen más flexible y avanzado. No obstante, si vemos su página de Snyk Advisor, a pesar de tener una puntuación media-alta y de tener una última versión publicada hace 6 meses, coincidiendo con la última actualización de Python, el proyecto está catalogado como inactivo.  
+    Nose2 es un framework de pruebas compatible con Unittest e incluye características que lo hacen más flexible y avanzado. No obstante, si vemos su página de Snyk Advisor, a pesar de tener una puntuación media-alta y de tener una última versión publicada hace 6 meses, coincidiendo con la última versión de Python, versión 3.13.0, el proyecto está catalogado como inactivo.  
 
 4. **Hammett**:
     [Snyk Advisor](https://snyk.io/advisor/python/hammett)  
