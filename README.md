@@ -53,9 +53,3 @@ Se han definido los siguientes milestones:
 
     - Para ejecutar los test realizamos:
     `make test`
-
-## Datos del Usuario 
-
-El usuario dispone de un archivo csv, descargado de su aplicación del banco, donde pueden verse los distintos ingresos y gastos listados por fecha. Los atributos que proporciona el banco son 5 (Fecha,Concepto,Categoría,Importe,Tipo Movimiento). Como podemos ver, hay gastos que podemos identificar gracias a los atributos Concepto y Categoría. La gestión de los Bizum es más difícil de identificar, ya que el usuario puede no recordar qué son esos Bizum enviados y recibidos, y menos aún lo conoce el banco que los categoriza en Transferencias. Dado que en este proyecto se van a gestionar los gastos, no es necesario identificar el gasto. Si es recurrente, se catalogará como fijo.  
-
-[CSV con los Datos del Usuario](/docs/gastos.csv)
