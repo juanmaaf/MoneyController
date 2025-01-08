@@ -9,7 +9,7 @@ from money_controller.presupuesto import leer_archivo_csv
 from money_controller.presupuesto import actualizar_monto_total
 from money_controller.presupuesto import procesar_gasto
 from money_controller.presupuesto import procesar_atributos
-from money_controller.presupuesto import procesar_datos
+from money_controller.presupuesto import procesar_presupuesto
 from money_controller.presupuesto import puede_permitirse_gasto_adicional
 
 INGRESO_1 = 1000
@@ -99,27 +99,27 @@ class TestGasto(unittest.TestCase):
             procesar_atributos(fecha_str, importe_str)
     
     @patch("money_controller.presupuesto.leer_archivo_csv")
-    def test_procesar_datos_gasto_variable(self, mock_leer_archivo_csv):
+    def test_procesar_presupuesto_gasto_variable(self, mock_leer_archivo_csv):
         mock_leer_archivo_csv.return_value = [
             "Fecha,Concepto,Categoría,Importe,Tipo Movimiento",
             "2024-01-01,Alquiler,Vivienda,226.67,Gasto"
         ]
         
-        presupuesto = procesar_datos("archivo.csv")
+        presupuesto = procesar_presupuesto("archivo.csv")
         
         self.assertEqual(len(presupuesto.gastos_variables), 1)
         self.assertEqual(presupuesto.gastos_variables[0].descripcion, "Alquiler")
         self.assertEqual(presupuesto.gastos_variables[0].categoria, CategoriaGasto.VARIABLE)
     
     @patch("money_controller.presupuesto.leer_archivo_csv")
-    def test_procesar_datos_gasto_repetido(self, mock_leer_archivo_csv):
+    def test_procesar_presupuesto_gasto_repetido(self, mock_leer_archivo_csv):
         mock_leer_archivo_csv.return_value = [
             "Fecha,Concepto,Categoría,Importe,Tipo Movimiento",
             "2024-01-01,Alquiler,Vivienda,226.67,Gasto",
             "2024-01-02,Alquiler,Vivienda,226.67,Gasto"
         ]
         
-        presupuesto = procesar_datos("archivo.csv")
+        presupuesto = procesar_presupuesto("archivo.csv")
         
         self.assertEqual(len(presupuesto.gastos_fijos), 2)
         self.assertEqual(presupuesto.gastos_fijos[0].descripcion, "Alquiler")
@@ -130,7 +130,7 @@ class TestGasto(unittest.TestCase):
         self.assertEqual(len(presupuesto.gastos_variables), 0)
     
     @patch('money_controller.presupuesto.leer_archivo_csv')
-    def test_procesar_datos_ingresos_y_gastos(self, mock_leer_archivo_csv):
+    def test_procesar_presupuesto_ingresos_y_gastos(self, mock_leer_archivo_csv):
         mock_leer_archivo_csv.return_value = [
             "Fecha,Concepto,Categoría,Importe,Tipo Movimiento",
             "2024-01-01,Alquiler,Vivienda,226.67,Gasto",
@@ -139,7 +139,7 @@ class TestGasto(unittest.TestCase):
             "2024-01-02,Alquiler,Vivienda,226.67,Gasto"
         ]
         
-        presupuesto = procesar_datos("archivo.csv")
+        presupuesto = procesar_presupuesto("archivo.csv")
     
         self.assertEqual(presupuesto.ingresos, [3000])
         self.assertEqual(len(presupuesto.gastos_fijos), 2)
