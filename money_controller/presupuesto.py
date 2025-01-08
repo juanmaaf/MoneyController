@@ -31,8 +31,6 @@ def leer_archivo_csv(ruta_archivo):
     try:
         with open(ruta_archivo, "r", encoding="utf-8") as archivo:
             lineas = archivo.readlines()
-            if not lineas:
-                raise ValueError("El archivo está vacío.")
             return lineas
     except FileNotFoundError:
         raise ValueError(f"El archivo {ruta_archivo} no existe")
