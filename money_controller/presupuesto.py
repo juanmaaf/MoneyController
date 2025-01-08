@@ -64,7 +64,7 @@ def actualizar_monto_total(presupuesto):
     total_gastos = sum(gasto.monto for gasto in presupuesto.gastos_fijos) + sum(gasto.monto for gasto in presupuesto.gastos_variables)
     presupuesto.monto_total = sum(presupuesto.ingresos) - total_gastos
 
-def procesar_datos(ruta_archivo):
+def procesar_presupuesto(ruta_archivo):
     lineas = leer_archivo_csv(ruta_archivo)
     presupuesto = Presupuesto(monto_total=0)
     gastos_vistos = {}
