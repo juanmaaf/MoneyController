@@ -43,22 +43,59 @@ def procesar_atributos(fecha_str, monto_str):
     fecha = datetime.strptime(fecha_str, "%Y-%m-%d")
     monto = float(monto_str)
     return fecha, monto
+        
+def procesar_gasto(presupuesto, gastos_vistos, descripcion, monto, fecha):
+    """
+    Procesa un gasto y lo clasifica como fijo o variable. Lógica de negocio. 
 
-def procesar_gasto(presupuesto, gastos_vistos, descripcion, categoria_str, monto, fecha):
-    clave_gasto = (descripcion, categoria_str, monto)
-    
+    Se catalogará como gasto fijo si es recurrente "visto". Si un gasto ya existe en la categoría VARIABLE con la misma descripción y monto, 
+    se convierte en FIJO (y se mueve de la lista de gastos variables a la lista de gastos fijos).
+    De lo contrario, se registra como un gasto nuevo en la categoría VARIABLE.
+
+    Parámetros:
+    - presupuesto: Objeto Presupuesto que contiene gastos fijos y variables.
+    - gastos_vistos: Diccionario para rastrear gastos ya procesados.
+    - descripcion: Descripción del gasto.
+    - monto: Monto del gasto.
+    - fecha: Fecha del gasto.
+    """
+    clave_gasto = (descripcion, monto)
+
     if clave_gasto in gastos_vistos:
-        for gasto in presupuesto.gastos_variables:
-            if gasto.descripcion == descripcion and gasto.monto == monto and gasto.categoria == CategoriaGasto.VARIABLE:
-                gasto.categoria=CategoriaGasto.FIJO
-                presupuesto.gastos_variables.remove(gasto)
-                presupuesto.gastos_fijos.append(gasto)
-        gasto = Gasto(descripcion=descripcion, monto=monto, fecha=fecha, categoria=CategoriaGasto.FIJO)
-        presupuesto.gastos_fijos.append(gasto)
+        agregar_gasto_fijo(presupuesto, descripcion, monto, fecha)
     else:
-        gasto = Gasto(descripcion=descripcion, monto=monto, fecha=fecha, categoria=CategoriaGasto.VARIABLE)
-        presupuesto.gastos_variables.append(gasto)
-        gastos_vistos[clave_gasto] = True
+        agregar_gasto_variable(presupuesto, gastos_vistos, clave_gasto, descripcion, monto, fecha)
+
+def convertir_a_fijo(presupuesto, descripcion, monto):
+    """
+    Busca si existe un gasto VARIABLE que con misma clave y lo convierte en FIJO
+    """
+    gasto_variable = next(
+        (g for g in presupuesto.gastos_variables if g.descripcion == descripcion and g.monto == monto and g.categoria == CategoriaGasto.VARIABLE),
+        None
+    )
+    
+    if gasto_variable:
+        presupuesto.gastos_variables.remove(gasto_variable)
+        gasto_variable.categoria = CategoriaGasto.FIJO
+        presupuesto.gastos_fijos.append(gasto_variable)
+    
+def agregar_gasto_fijo(presupuesto, descripcion, monto, fecha):
+    """
+    Agrega un nuevo gasto a la categoría FIJO y busca si existe un gasto VARIABLE que con misma clave y lo convierte en FIJO. 
+    """
+    gasto = Gasto(descripcion=descripcion, monto=monto, fecha=fecha, categoria=CategoriaGasto.FIJO)
+    presupuesto.gastos_fijos.append(gasto)
+    
+    convertir_a_fijo(presupuesto, descripcion, monto)
+
+def agregar_gasto_variable(presupuesto, gastos_vistos, clave_gasto, descripcion, monto, fecha):
+    """
+    Agrega un nuevo gasto a la categoría VARIABLE y lo marca como visto.
+    """
+    gasto = Gasto(descripcion=descripcion, monto=monto, fecha=fecha, categoria=CategoriaGasto.VARIABLE)
+    presupuesto.gastos_variables.append(gasto)
+    gastos_vistos[clave_gasto] = True
 
 def actualizar_monto_total(presupuesto):
     total_gastos = sum(gasto.monto for gasto in presupuesto.gastos_fijos) + sum(gasto.monto for gasto in presupuesto.gastos_variables)
@@ -73,10 +110,10 @@ def procesar_presupuesto(ruta_archivo):
         if i == 0: 
             continue
         atributos = linea.strip().split(",")
-        if len(atributos) != 5:
+        if len(atributos) != 4:
             continue
         
-        fecha_str, descripcion, categoria_str, monto_str, tipo_movimiento = atributos
+        fecha_str, descripcion, monto_str, tipo_movimiento = atributos
         
         try:
             fecha, monto = procesar_atributos(fecha_str, monto_str)
@@ -86,7 +123,7 @@ def procesar_presupuesto(ruta_archivo):
         if tipo_movimiento == "Ingreso":
             presupuesto.ingresos.append(monto)
         elif tipo_movimiento == "Gasto":
-            procesar_gasto(presupuesto, gastos_vistos, descripcion, categoria_str, monto, fecha)
+            procesar_gasto(presupuesto, gastos_vistos, descripcion, monto, fecha)
 
     actualizar_monto_total(presupuesto)
     return presupuesto
