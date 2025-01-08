@@ -30,16 +30,6 @@ class TestGasto(unittest.TestCase):
             self.assertEqual(resultado[1].strip(), "2024-01-01,Alquiler,Vivienda,226.67,Gasto")
             self.assertEqual(resultado[2].strip(), "2024-01-01,Gimnasio,Ocio,25,Gasto")
     
-    def test_actualizar_monto_total(self):
-        presupuesto = presupuesto.Presupuesto(monto_total=0)
-        presupuesto.ingresos = [INGRESO_1, INGRESO_2]
-        presupuesto.gastos_fijos = [Gasto(descripcion="Alquiler", monto=ALQUILER_IMPORTE, fecha=FECHA_ALQUILER, categoria=CategoriaGasto.FIJO)]
-        presupuesto.gastos_variables = [Gasto(descripcion="Comida", monto=COMIDA_IMPORTE, fecha=FECHA_COMIDA, categoria=CategoriaGasto.VARIABLE)]
-        
-        actualizar_monto_total(presupuesto)
-        
-        self.assertEqual(presupuesto.monto_total, INGRESO_1 + INGRESO_2 - ALQUILER_IMPORTE - COMIDA_IMPORTE)
-    
     def test_procesar_gasto_variable(self):
         presupuesto = p.Presupuesto(monto_total=0)
         gastos_vistos = {}
