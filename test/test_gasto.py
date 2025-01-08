@@ -19,16 +19,16 @@ GASTO_ADICIONAL = 100
 
 class TestGasto(unittest.TestCase):
     def test_leer_archivo_correcto(self):
-        contenido = """Fecha,Concepto,Categoría,Importe,Tipo Movimiento
-        2024-01-01,Alquiler,Vivienda,226.67,Gasto
-        2024-01-01,Gimnasio,Ocio,25,Gasto"""
+        contenido = """Fecha,Concepto,Importe,Tipo Movimiento
+        2024-01-01,Alquiler,226.67,Gasto
+        2024-01-01,Gimnasio,25,Gasto"""
         
         with patch("builtins.open", mock_open(read_data=contenido)):
             resultado = p.leer_archivo_csv("archivo_correcto.csv")
             self.assertEqual(len(resultado), 3)
-            self.assertEqual(resultado[0].strip(), "Fecha,Concepto,Categoría,Importe,Tipo Movimiento")
-            self.assertEqual(resultado[1].strip(), "2024-01-01,Alquiler,Vivienda,226.67,Gasto")
-            self.assertEqual(resultado[2].strip(), "2024-01-01,Gimnasio,Ocio,25,Gasto")
+            self.assertEqual(resultado[0].strip(), "Fecha,Concepto,Importe,Tipo Movimiento")
+            self.assertEqual(resultado[1].strip(), "2024-01-01,Alquiler,226.67,Gasto")
+            self.assertEqual(resultado[2].strip(), "2024-01-01,Gimnasio,25,Gasto")
     
     def test_procesar_gasto_variable(self):
         presupuesto = p.Presupuesto(monto_total=0)
