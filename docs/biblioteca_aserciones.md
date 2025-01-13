@@ -11,7 +11,7 @@ Para la elección de la biblioteca de aserciones, he buscado y evaluado las dist
 1. **Unittest (PyUnit)**:
     [Página oficial Python](https://github.com/python/cpython/tree/main/Lib/unittest)  
     [Documentación oficial Python](https://docs.python.org/es/3/library/unittest.html)   
-    Como parte de la biblioteca estándar de Python, es una herramienta ampliamente utilizada y considerada un estándar del lenguaje. Como podemos ver en los distintos métodos assert que ofrece [TestCase](https://docs.python.org/es/3/library/unittest.html#unittest.TestCase), ofrece distintos tipos de aserciones. No aparece en Snyk Advisor ni es evaluado en foros ya que es una biblioteca que Python incluye. Su soporte activo está garantizado por el equipo de Python.  
+    Como parte de la biblioteca estándar de Python, es una herramienta ampliamente utilizada y considerada un estándar del lenguaje. No aparece en Snyk Advisor ni es evaluado en foros ya que es una biblioteca que Python incluye. Su soporte activo está garantizado por el equipo de Python.  
 
 2. **Grappa**:
     [Snyk Advisor](https://snyk.io/advisor/python/grappa)  
