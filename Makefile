@@ -1,7 +1,7 @@
-.PHONY: install check clean
+.PHONY: install check
 
 install:
-	uv install
+	uv lock
 
 check:
 	python -m py_compile money_controller/*.py
