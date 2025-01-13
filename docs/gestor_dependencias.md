@@ -3,9 +3,9 @@ En el desarrollo del anterior objetivo, se usó el archivo `pyproject.toml` como
 
 Para la gestión de dependencias en este proyecto de Python, he evaluado las opciones disponibles.  Aquí detallo los criterios específicos que se establecieron antes de realizar la elección, para luego seleccionar la herramienta que mejor cumple con los objetivos del proyecto.  
 
-- **Compatibilidad con el estándar `pyproject.toml`**: La herramienta elegida como gestor de dependencias debe usar `pyproject.toml` como archivo de configuración, facilitando la centralización y estandarización de las dependencias del proyecto. Es un requisito mínimo.    
-- **Rapidez operativa**: La herramienta debe ser lo más rápida posible para instalar dependencias de manera eficiente y con un impacto mínimo en el flujo de desarrollo.  
-- **Mantenimiento y comunidad**: La herramienta debe tener soporte activo, actualizaciones regulares y una comunidad activa que pueda responder dudas. Podemos comprobar este criterio en la página de Snyk Advisor de cada herramienta.
+- La herramienta elegida como gestor de dependencias debe usar `pyproject.toml` como archivo de configuración, facilitando la centralización y estandarización de las dependencias del proyecto. Es un requisito mínimo que permite cumplir con las buenas prácticas mencionadas al principio.    
+- Se considerará la puntuación de [Snyk Advisor](https://snyk.io/advisor/). Esta puntuación está basada en cuatro distintos criterios (Security, Popularity, Maintenance y Community). Esta puntuación nos permite comparar las herramientas de forma objetiva. 
+- Se considerará que la herramienta sea lo más rápida posible para instalar dependencias de manera eficiente y con un impacto mínimo en el flujo de desarrollo. Podemos verificar de forma objetiva este criterio basándonos en la información proporcionada por Astral [Astral](https://astral.sh/blog/uv), comparando las herramientas que se comparan a continuación. 
 
 ## Comparación de Herramientas
 
@@ -14,27 +14,23 @@ Para gestionar dependencias en este proyecto, se evaluaron cuatro herramientas: 
 1. **Poetry**: 
    [Poetry](https://github.com/python-poetry/poetry)    
    [Poetry Snyk](https://snyk.io/advisor/python/poetry)  
-   - **Rapidez**: Aunque Poetry es rápido y eficiente, su enfoque en una gestión más completa puede implicar una ligera sobrecarga en comparación con herramientas más ligeras.  
-   - **Mantenimiento y comunidad**: Tiene un desarrollo activo, con actualizaciones frecuentes y una comunidad amplia.   
+   Poetry es una herramienta bastante popular y conocida basada en `pyproject.toml` para la gestión de dependencias. Como podemos ver en su página de Snyk, tiene una alta puntuación (94/100). A pesar de tener su última versión publicada hace 2 días, el criterio "Maintenance" está catalogado como "Sustainable". 
 
 2. **PDM**:  
    [PDM](https://github.com/pdm-project/pdm)   
    [PDM Snyk](https://snyk.io/advisor/python/pdm)     
-   - **Rapidez**: PDM es rápido, pero puede ser más complejo debido al uso de PEP 582.  
-   - **Mantenimiento y comunidad**: Cuenta con un mantenimiento activo y está ganando popularidad. La comunidad está en crecimiento, aunque es más pequeña que la de Poetry, al ser una herramienta más reciente.  
+   PDM es una herramienta moderna basada en `pyproject.toml` para la gestión de depencencias. Como podemos ver en su página de Snyk, tiene una alta puntuación (94/100), igual que Poetry. Sin embargo, a diferencia de poetry, el criterio "Maintenance" está catalogado como "Healthy".
 
 3. **Hatch**: 
    [Hatch](https://github.com/pypa/hatch)  
    [Hatch Snyk](https://snyk.io/advisor/python/hatch)  
-   - **Rapidez**: Hatch es más lento que otras opciones especializadas en tareas más simples debido a su enfoque en proyectos más complejos y sus características avanzadas.  
-   - **Mantenimiento y comunidad**: Cuenta con un mantenimiento activo y su comunidad es bastante pequeña.
+   Hatch es una herramienta moderna basada en `pyproject.toml` para la gestión de depencencias. Como podemos ver en su página de Snyk, tiene una puntuación media-alta (85/100), menor que Poetry y PDM. Igual que Poetry, el criterio "Maintenance" está catalogado como "Sustainable" a pesar de tener una últma versión publicada hace 29 días. 
 
 4. **UV**: 
    [UV](https://github.com/astral-sh/uv)   
    [UV Snyk](https://snyk.io/advisor/python/uv)  
-   - **Rapidez**: UV es extremadamente rápida, como se indica en la página de Snyk Advisor, tanto en la instalación de dependencias como en la inicialización de entornos. 
-   - **Mantenimiento y comunidad**: Es relativamente nueva, con un mantenimiento activo pero una comunidad aún pequeña. 
+   UV es una herramienta emergente enfocada en la velocidad. Tanto en su página de GitHub como Snyk, podemos ver que es extremadamente rápida en comparación a Poetry y PDM, como se puede ver en la gráfica proporcionada. Está basada en `pyproject.toml`. Como podemos ver en su página de Snyk, tiene una puntuación alta (93/100), similar a PDM y Poetry. Igual que PDM, el criterio "Maintenance" está catalogado como "Healthy", y su última versión fue publicada hace 2 días. 
 
 ## Conclusión
 
-En primer lugar, descarto Hatch por ser el más lento al estar orientado a proyectos complejos. Entre Poetry, PDM y UV, herramientas compatibles con `pyproyect.toml`, rápidas y con mantenimiento activo, elijo finalmente **UV** ya que es el más rápido. Podemos justificar esta afirmación apoyándonos en los benckmarks que publica UV en su página de GitHUB, donde se compara con Poetry y PDM. [Benckmarks](https://github.com/astral-sh/uv/blob/main/BENCHMARKS.md)  
+Las 4 herramientas se basan en `pyproject.toml` para la gestión de dependencias, y tienen una alta puntuación en Snyk, que evalúa los cuatro criterios mencionados. En primer lugar descarto Hatch, al ser la herramienta con menor puntuación en Snyk además de tener el criterio "Maintenance" catalogado como "Sustainable". Entre PDM, Poetry y UV se podría elegir cualquiera de las herramientas, ya que cumplen con los criterios especificados y además tienen una puntuación similar en Snyk. Sin embargo, el criterio referente a la velocidad de la herramienta, me permite diferenciar estas tres herramientas con objetividad, basándome en la gráfica que compara las herramientas proporcionada por [Astral](https://astral.sh/blog/uv). También podemos ver esta gráfica en las páginas de Snyk y GitHub de UV, midiendo el tiempo que tarda cada una de las herramientas. Por tanto, elijo **UV** como gestor de dependencias para el proyecto de este repositorio. 
