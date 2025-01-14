@@ -39,3 +39,9 @@ Después de comparar las imágenes, llega el momento de elegir una de ellas. Sin
     - python:slim-bullseye. Elijo la que tiene menos peso de las 3 variantes planteadas.    
     - bitnami/python  
 
+Creando imágenes docker con las anteriores 4 bases mencionadas, incluyendo las funcionalidades necesarias para el desarrollo del proyecto, el resultado ha sido el siguiente.  
+[Imagen](/docs/espacio_contenedores.png)
+
+Por tanto, elijo **Alpine Linux** como imagen base para el contenedor docker que se va a desarrollar en este proyecto.  
+
+
