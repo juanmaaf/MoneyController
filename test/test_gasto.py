@@ -132,34 +132,34 @@ class TestGasto(unittest.TestCase):
         self.assertEqual(presupuesto_test.monto_total, sum(presupuesto_test.ingresos) - total_gastos)
         
     def test_puede_permitirse_gasto_adicional(self):
-        presupuesto = p.Presupuesto(monto_total=0)
-        presupuesto.ingresos = [INGRESO_3, INGRESO_2]
-        presupuesto.gastos_fijos = [Gasto(descripcion="Alquiler", monto=ALQUILER_IMPORTE, fecha=FECHA_ALQUILER,  categoria=CategoriaGasto.FIJO)]
-        presupuesto.gastos_variables = [Gasto(descripcion="Comida", monto=COMIDA_IMPORTE, fecha=FECHA_COMIDA, categoria=CategoriaGasto.VARIABLE)]
-        presupuesto.meta_ahorro =META_AHORRO
+        presupuesto_test = presupuesto.Presupuesto(monto_total=0)
+        presupuesto_test.ingresos = [INGRESO_3, INGRESO_2]
+        presupuesto_test.gastos_fijos = [Gasto(descripcion="Alquiler", monto=ALQUILER_IMPORTE, fecha=FECHA_ALQUILER,  categoria=CategoriaGasto.FIJO)]
+        presupuesto_test.gastos_variables = [Gasto(descripcion="Comida", monto=COMIDA_IMPORTE, fecha=FECHA_COMIDA, categoria=CategoriaGasto.VARIABLE)]
+        presupuesto_test.meta_ahorro =META_AHORRO
         
-        p.actualizar_monto_total(presupuesto)
+        presupuesto.actualizar_monto_total(presupuesto_test)
         
         gasto_adicional = GASTO_ADICIONAL
-        puede_permitirse = p.puede_permitirse_gasto_adicional(presupuesto, gasto_adicional)
+        puede_permitirse = presupuesto.puede_permitirse_gasto_adicional(presupuesto_test, gasto_adicional)
         
         self.assertTrue(puede_permitirse)
-        self.assertEqual(presupuesto.gasto_no_planificado, GASTO_ADICIONAL)
+        self.assertEqual(presupuesto_test.gasto_no_planificado, GASTO_ADICIONAL)
         
     def test_no_permitir_gasto_adicional(self):
-        presupuesto = p.Presupuesto(monto_total=0)
-        presupuesto.ingresos = [INGRESO_4, INGRESO_4]
-        presupuesto.gastos_fijos = [Gasto(descripcion="Alquiler", monto=ALQUILER_IMPORTE, fecha=FECHA_ALQUILER,  categoria=CategoriaGasto.FIJO)]
-        presupuesto.gastos_variables = [Gasto(descripcion="Comida", monto=COMIDA_IMPORTE, fecha=FECHA_COMIDA, categoria=CategoriaGasto.VARIABLE)]
-        presupuesto.meta_ahorro = META_AHORRO
+        presupuesto_test = presupuesto.Presupuesto(monto_total=0)
+        presupuesto_test.ingresos = [INGRESO_4, INGRESO_4]
+        presupuesto_test.gastos_fijos = [Gasto(descripcion="Alquiler", monto=ALQUILER_IMPORTE, fecha=FECHA_ALQUILER,  categoria=CategoriaGasto.FIJO)]
+        presupuesto_test.gastos_variables = [Gasto(descripcion="Comida", monto=COMIDA_IMPORTE, fecha=FECHA_COMIDA, categoria=CategoriaGasto.VARIABLE)]
+        presupuesto_test.meta_ahorro = META_AHORRO
         
-        p.actualizar_monto_total(presupuesto)
+        presupuesto.actualizar_monto_total(presupuesto_test)
 
         gasto_adicional = GASTO_ADICIONAL
-        puede_permitirse = p.puede_permitirse_gasto_adicional(presupuesto, gasto_adicional)
+        puede_permitirse = presupuesto.puede_permitirse_gasto_adicional(presupuesto_test, gasto_adicional)
         
         self.assertFalse(puede_permitirse)
-        self.assertIsNone(presupuesto.gasto_no_planificado)
+        self.assertIsNone(presupuesto_test.gasto_no_planificado)
 
 if __name__ == "__main__":
     unittest.main()  
