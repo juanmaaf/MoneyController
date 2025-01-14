@@ -16,27 +16,27 @@ Para la elección de la biblioteca de aserciones, he buscado y evaluado las dist
 2. **Grappa**:
     [Snyk Advisor](https://snyk.io/advisor/python/grappa)  
     [PyPi](https://pypi.org/project/grappa/)  
-    Como podemos ver en su página de Snyk Advisor, tiene una baja puntuación y además su última versión se publicó hace 4 años, 4 versiones de Pyhton atrás, versión 3.9.0. 
+    Como podemos ver en su página de Snyk Advisor, tiene una baja puntuación (51/100) y además su última versión se publicó hace 4 años, 4 versiones de Pyhton atrás, versión 3.9.0. 
 
 3. **PyHamCrest**:
     [Snyk Advisor](https://snyk.io/advisor/python/pyhamcrest)  
     [PyPi](https://pypi.org/project/PyHamcrest/)  
-    Como podemos ver en su página de Snyk Advisor, tiene una baja puntuación, lo que nos lleva a la conclusión de no tenerla en cuenta. Sí es cierto que su última versión se publicó hace un año, 1 versión de Python atrás, versión 3.12.0, pero el proyecto ya se cataloga como inactivo.  
+    Como podemos ver en su página de Snyk Advisor, a pesar de tener una puntuación media alta (72/100) y que su última versión se publicase hace un año, una versión de Python atrás, versión 3.12.0, el proyecto ya se cataloga como inactivo, lo que nos lleva a la conclusión de no tenerla en cuenta.  
 
 4. **Expects**:
     [Snyk Advisor](https://snyk.io/advisor/python/expects)  
     [PyPi](https://pypi.org/project/expects/)    
-    Como podemos ver en su página de Snyk Advisor, tiene una baja puntuación y además su última versión se publicó hace 2 años, 2 versiones de Python atrás, versión 3.11.0.  
+    Como podemos ver en su página de Snyk Advisor, tiene una baja puntuación (52/100) y además su última versión se publicó hace 2 años, 2 versiones de Python atrás, versión 3.11.0.  
 
 5. **Ensure**:
     [Snyk Advisor](https://snyk.io/advisor/python/ensure)  
     [PyPi](https://pypi.org/project/ensure/)  
-    Como podemos ver en su página de Snyk Advisor, tiene una baja puntuación, lo que nos lleva a la conclusión de no tenerla en cuenta. Sí es cierto que su última versión se publicó hace un año, 1 versión de Python atrás, versión 3.12.0, pero el proyecto ya se cataloga como inactivo.    
+    Como podemos ver en su página de Snyk Advisor, tiene una baja puntuación (53/100), lo que nos lleva a la conclusión de no tenerla en cuenta. Sí es cierto que su última versión se publicó hace un año, 1 versión de Python atrás, versión 3.12.0, pero el proyecto ya se cataloga como inactivo.    
 
 6. **Behave**:
     [Snyk Advisor](https://snyk.io/advisor/python/behave)  
     [PyPi](https://pypi.org/project/behave/)  
-    Como podemos ver en su página de Snyk Advisor su última versión se publicó hace 7 años, 7 versiones de Python atrás, versión 3.6.0. No obstante, no se cataloga el proyecto como inactivo y tiene commits recientes, lo que nos hace tener en cuenta esta herramienta. Tiene un enfoque BDD. 
+    Como podemos ver en su página de Snyk Advisor, tiene una puntuación media-alta (83/100). Además, su última versión se publicó hace 7 años, 7 versiones de Python atrás, versión 3.6.0. No obstante, no se cataloga el proyecto como inactivo y tiene commits recientes, lo que nos hace tener en cuenta esta herramienta. Tiene un enfoque BDD. 
 
 # Conclusión
 
