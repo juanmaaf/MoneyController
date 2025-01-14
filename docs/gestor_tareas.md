@@ -3,7 +3,7 @@
 Para la automatización de tareas en este proyecto de Python, he evaluado distintas opciones disponibles.  Aquí detallo los criterios específicos que se establecieron antes de realizar la elección, para luego seleccionar la herramienta que mejor cumple con los objetivos del proyecto.  
 
 - Se considerará la puntuación de [Snyk Advisor](https://snyk.io/advisor/). Esta puntuación está basada en cuatro distintos criterios (Security, Popularity, Maintenance y Community). Esta puntuación nos permite comparar las herramientas de forma objetiva. 
-- Si no tiene página de [Snyk Advisor](https://snyk.io/advisor/), se considerará que la herramienta sea actualizada regularmente y mantenida. Podremos verificar este criterio de forma objetiva basándonos en las páginas de [GitHub](https://github.com/) de cada herramienta.  
+- Se considerará que la herramienta sea actualizada regularmente y mantenida.  
 
 ## Comparación de Herramientas
 
@@ -15,7 +15,8 @@ Para gestionar dependencias en este proyecto, se evaluaron cuatro herramientas p
    Como podemos ver en su página de Snyk Advisor, a pesar de tener una puntuación media-alta (76/100) el proyecto Invoke está catalogado como Inactivo. Además, su última versión se publicó hace 2 años. 
 
 2. **Make**: 
-   [Make](https://github.com/mirror/make)  
+   [Make GNU](https://www.gnu.org/software/make/)  
+   [Make Git](https://git.savannah.gnu.org/cgit/make.git)  
    `Make` es una herramienta establecida que ha sido activamente mantenida durante décadas, asegurando una alta fiabilidad y compatibilidad futura sin problemas, con una comunidad muy amplia.  
 
 3. **Task**: 
