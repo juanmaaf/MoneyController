@@ -1,7 +1,7 @@
 import unittest
 from unittest.mock import mock_open, patch
 from datetime import datetime
-from money_controller import presupuesto as p
+from money_controller import presupuesto
 from money_controller.gasto import Gasto
 from money_controller.categoriaGasto import CategoriaGasto
 
@@ -24,7 +24,7 @@ class TestGasto(unittest.TestCase):
         2024-01-01,Gimnasio,25,Gasto"""
         
         with patch("builtins.open", mock_open(read_data=contenido)):
-            resultado = p.leer_archivo_csv("archivo_correcto.csv")
+            resultado = presupuesto.leer_archivo_csv("archivo_correcto.csv")
             self.assertEqual(len(resultado), 3)
             self.assertEqual(resultado[0].strip(), "Fecha,Concepto,Importe,Tipo Movimiento")
             self.assertEqual(resultado[1].strip(), "2024-01-01,Alquiler,226.67,Gasto")
