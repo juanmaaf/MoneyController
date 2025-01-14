@@ -19,12 +19,12 @@ Para gestionar dependencias en este proyecto, se evaluaron cuatro herramientas: 
 2. **PDM**:  
    [PDM](https://github.com/pdm-project/pdm)   
    [PDM Snyk](https://snyk.io/advisor/python/pdm)     
-   PDM es una herramienta moderna basada en `pyproject.toml` para la gestión de depencencias. Como podemos ver en su página de Snyk, tiene una alta puntuación (94/100), igual que Poetry. Sin embargo, a diferencia de poetry, el criterio "Maintenance" está catalogado como "Healthy".
+   PDM es una herramienta moderna basada en `pyproject.toml` para la gestión de dependencias. Como podemos ver en su página de Snyk, tiene una alta puntuación (94/100), igual que Poetry. Sin embargo, a diferencia de poetry, el criterio "Maintenance" está catalogado como "Healthy".
 
 3. **Hatch**: 
    [Hatch](https://github.com/pypa/hatch)  
    [Hatch Snyk](https://snyk.io/advisor/python/hatch)  
-   Hatch es una herramienta moderna basada en `pyproject.toml` para la gestión de depencencias. Como podemos ver en su página de Snyk, tiene una puntuación media-alta (85/100), menor que Poetry y PDM. Igual que Poetry, el criterio "Maintenance" está catalogado como "Sustainable" a pesar de tener una últma versión publicada hace 29 días. 
+   Hatch es una herramienta moderna basada en `pyproject.toml` para la gestión de dependencias. Como podemos ver en su página de Snyk, tiene una puntuación media-alta (85/100), menor que Poetry y PDM. Igual que Poetry, el criterio "Maintenance" está catalogado como "Sustainable" a pesar de tener una últma versión publicada hace 29 días. 
 
 4. **UV**: 
    [UV](https://github.com/astral-sh/uv)   
