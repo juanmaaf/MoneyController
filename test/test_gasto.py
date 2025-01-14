@@ -31,38 +31,38 @@ class TestGasto(unittest.TestCase):
             self.assertEqual(resultado[2].strip(), "2024-01-01,Gimnasio,25,Gasto")
     
     def test_procesar_gasto_variable(self):
-        presupuesto = p.Presupuesto(monto_total=0)
+        presupuesto_test = presupuesto.Presupuesto(monto_total=0)
         gastos_vistos = {}
     
-        p.procesar_gasto(presupuesto, gastos_vistos, "Alquiler", ALQUILER_IMPORTE, FECHA_ALQUILER)
+        presupuesto.procesar_gasto(presupuesto_test, gastos_vistos, "Alquiler", ALQUILER_IMPORTE, FECHA_ALQUILER)
         
-        self.assertEqual(len(presupuesto.gastos_variables), 1)
-        self.assertEqual(presupuesto.gastos_variables[0].descripcion, "Alquiler")
-        self.assertEqual(presupuesto.gastos_variables[0].categoria, CategoriaGasto.VARIABLE)
+        self.assertEqual(len(presupuesto_test.gastos_variables), 1)
+        self.assertEqual(presupuesto_test.gastos_variables[0].descripcion, "Alquiler")
+        self.assertEqual(presupuesto_test.gastos_variables[0].categoria, CategoriaGasto.VARIABLE)
     
     def test_procesar_gasto_fijo(self):
-        presupuesto = p.Presupuesto(monto_total=0)
+        presupuesto_test = presupuesto.Presupuesto(monto_total=0)
         gastos_vistos = {}
 
-        p.procesar_gasto(presupuesto, gastos_vistos, "Alquiler", ALQUILER_IMPORTE, FECHA_ALQUILER)
-        p.procesar_gasto(presupuesto, gastos_vistos, "Alquiler", ALQUILER_IMPORTE, FECHA_ALQUILER_2)
+        presupuesto.procesar_gasto(presupuesto_test, gastos_vistos, "Alquiler", ALQUILER_IMPORTE, FECHA_ALQUILER)
+        presupuesto.procesar_gasto(presupuesto_test, gastos_vistos, "Alquiler", ALQUILER_IMPORTE, FECHA_ALQUILER_2)
 
-        self.assertEqual(len(presupuesto.gastos_fijos), 2)
-        self.assertEqual(presupuesto.gastos_fijos[0].descripcion, "Alquiler")
-        self.assertEqual(presupuesto.gastos_fijos[0].categoria, CategoriaGasto.FIJO)
-        self.assertEqual(presupuesto.gastos_fijos[0].fecha, FECHA_ALQUILER_2)
+        self.assertEqual(len(presupuesto_test.gastos_fijos), 2)
+        self.assertEqual(presupuesto_test.gastos_fijos[0].descripcion, "Alquiler")
+        self.assertEqual(presupuesto_test.gastos_fijos[0].categoria, CategoriaGasto.FIJO)
+        self.assertEqual(presupuesto_test.gastos_fijos[0].fecha, FECHA_ALQUILER_2)
 
-        self.assertEqual(presupuesto.gastos_fijos[1].descripcion, "Alquiler")
-        self.assertEqual(presupuesto.gastos_fijos[1].categoria, CategoriaGasto.FIJO)
-        self.assertEqual(presupuesto.gastos_fijos[1].fecha, FECHA_ALQUILER)
+        self.assertEqual(presupuesto_test.gastos_fijos[1].descripcion, "Alquiler")
+        self.assertEqual(presupuesto_test.gastos_fijos[1].categoria, CategoriaGasto.FIJO)
+        self.assertEqual(presupuesto_test.gastos_fijos[1].fecha, FECHA_ALQUILER)
 
-        self.assertEqual(len(presupuesto.gastos_variables), 0)
+        self.assertEqual(len(presupuesto_test.gastos_variables), 0)
         
     def test_procesar_atributos_correctos(self):
         fecha_str = "2024-01-01"
         importe_str = "226.67"
         
-        fecha, importe = p.procesar_atributos(fecha_str, importe_str)
+        fecha, importe = presupuesto.procesar_atributos(fecha_str, importe_str)
         
         self.assertEqual(fecha, FECHA_ALQUILER)
         self.assertEqual(importe, ALQUILER_IMPORTE)
@@ -72,14 +72,14 @@ class TestGasto(unittest.TestCase):
         importe_str = "abc"
         
         with self.assertRaises(ValueError):
-            p.procesar_atributos(fecha_str, importe_str)
+            presupuesto.procesar_atributos(fecha_str, importe_str)
     
     def test_procesar_atributos_fecha_invalida(self):
         fecha_str = "01-01-2024" 
         importe_str = "226.67"
         
         with self.assertRaises(ValueError): 
-            p.procesar_atributos(fecha_str, importe_str)
+            presupuesto.procesar_atributos(fecha_str, importe_str)
     
     @patch("money_controller.presupuesto.leer_archivo_csv")
     def test_procesar_presupuesto_gasto_variable(self, mock_leer_archivo_csv):
@@ -88,11 +88,11 @@ class TestGasto(unittest.TestCase):
             "2024-01-01,Alquiler,226.67,Gasto"
         ]
         
-        presupuesto = p.procesar_presupuesto("archivo.csv")
+        presupuesto_test = presupuesto.procesar_presupuesto("archivo.csv")
         
-        self.assertEqual(len(presupuesto.gastos_variables), 1)
-        self.assertEqual(presupuesto.gastos_variables[0].descripcion, "Alquiler")
-        self.assertEqual(presupuesto.gastos_variables[0].categoria, CategoriaGasto.VARIABLE)
+        self.assertEqual(len(presupuesto_test.gastos_variables), 1)
+        self.assertEqual(presupuesto_test.gastos_variables[0].descripcion, "Alquiler")
+        self.assertEqual(presupuesto_test.gastos_variables[0].categoria, CategoriaGasto.VARIABLE)
     
     @patch("money_controller.presupuesto.leer_archivo_csv")
     def test_procesar_presupuesto_gasto_repetido(self, mock_leer_archivo_csv):
@@ -102,15 +102,15 @@ class TestGasto(unittest.TestCase):
             "2024-01-02,Alquiler,226.67,Gasto"
         ]
         
-        presupuesto = p.procesar_presupuesto("archivo.csv")
+        presupuesto_test = presupuesto.procesar_presupuesto("archivo.csv")
         
-        self.assertEqual(len(presupuesto.gastos_fijos), 2)
-        self.assertEqual(presupuesto.gastos_fijos[0].descripcion, "Alquiler")
-        self.assertEqual(presupuesto.gastos_fijos[0].categoria, CategoriaGasto.FIJO)
+        self.assertEqual(len(presupuesto_test.gastos_fijos), 2)
+        self.assertEqual(presupuesto_test.gastos_fijos[0].descripcion, "Alquiler")
+        self.assertEqual(presupuesto_test.gastos_fijos[0].categoria, CategoriaGasto.FIJO)
         
-        self.assertEqual(presupuesto.gastos_fijos[1].descripcion, "Alquiler")
-        self.assertEqual(presupuesto.gastos_fijos[1].categoria, CategoriaGasto.FIJO)
-        self.assertEqual(len(presupuesto.gastos_variables), 0)
+        self.assertEqual(presupuesto_test.gastos_fijos[1].descripcion, "Alquiler")
+        self.assertEqual(presupuesto_test.gastos_fijos[1].categoria, CategoriaGasto.FIJO)
+        self.assertEqual(len(presupuesto_test.gastos_variables), 0)
     
     @patch('money_controller.presupuesto.leer_archivo_csv')
     def test_procesar_presupuesto_ingresos_y_gastos(self, mock_leer_archivo_csv):
@@ -122,14 +122,14 @@ class TestGasto(unittest.TestCase):
             "2024-01-02,Alquiler,226.67,Gasto"
         ]
         
-        presupuesto = p.procesar_presupuesto("archivo.csv")
+        presupuesto_test = presupuesto.procesar_presupuesto("archivo.csv")
     
-        self.assertEqual(presupuesto.ingresos, [3000])
-        self.assertEqual(len(presupuesto.gastos_fijos), 2)
-        self.assertEqual(len(presupuesto.gastos_variables), 1)
+        self.assertEqual(presupuesto_test.ingresos, [3000])
+        self.assertEqual(len(presupuesto_test.gastos_fijos), 2)
+        self.assertEqual(len(presupuesto_test.gastos_variables), 1)
         
-        total_gastos = sum(gasto.monto for gasto in presupuesto.gastos_fijos) + sum(gasto.monto for gasto in presupuesto.gastos_variables)
-        self.assertEqual(presupuesto.monto_total, sum(presupuesto.ingresos) - total_gastos)
+        total_gastos = sum(gasto.monto for gasto in presupuesto_test.gastos_fijos) + sum(gasto.monto for gasto in presupuesto_test.gastos_variables)
+        self.assertEqual(presupuesto_test.monto_total, sum(presupuesto_test.ingresos) - total_gastos)
         
     def test_puede_permitirse_gasto_adicional(self):
         presupuesto = p.Presupuesto(monto_total=0)
