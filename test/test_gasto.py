@@ -64,8 +64,8 @@ class TestGasto(unittest.TestCase):
         
         fecha, importe = p.procesar_atributos(fecha_str, importe_str)
         
-        self.assertEqual(fecha, datetime(2024, 1, 1))
-        self.assertEqual(importe, 226.67)
+        self.assertEqual(fecha, FECHA_ALQUILER)
+        self.assertEqual(importe, ALQUILER_IMPORTE)
     
     def test_procesar_atributos_importe_invalido(self):
         fecha_str = "2024-01-01"
