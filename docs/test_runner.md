@@ -13,17 +13,17 @@ A continuación detallo los criterios específicos que he tenido en cuenta para 
 1. **Pytest**:
     [Snyk Advisor](https://snyk.io/advisor/python/pytest)    
     [PyPi](https://pypi.org/project/pytest/)   
-    Pytest es uno de los test runners más populares y usados en proyectos desarrollados en Python. Ofrece soporte para fixtures y proporciona salidas detalladas. En su página de Snyk Advisor podemos ver que tiene una alta puntuación, el proyecto tiene soporte activo y presenta actualizaciones recientes, coincidiendo con la última versión de Python, versión 3.13.0.   
+    Pytest es uno de los test runners más populares y usados en proyectos desarrollados en Python. Ofrece soporte para fixtures y proporciona salidas detalladas. En su página de Snyk Advisor podemos ver que tiene una alta puntuación (97/100), el proyecto tiene soporte activo y presenta actualizaciones recientes, coincidiendo con la última versión de Python, versión 3.13.0.   
 
 2. **Nose2**:
     [Snyk Advisor](https://snyk.io/advisor/python/nose2)    
     [PyPi](https://pypi.org/project/nose2/)    
-    Nose2 es un framework de pruebas compatible con Unittest e incluye características que lo hacen más flexible y avanzado. No obstante, si vemos su página de Snyk Advisor, a pesar de tener una puntuación media-alta y de tener una última versión publicada hace 6 meses, coincidiendo con la última versión de Python, versión 3.13.0, el proyecto está catalogado como inactivo.  
+    Nose2 es un framework de pruebas compatible con Unittest e incluye características que lo hacen más flexible y avanzado. No obstante, si vemos su página de Snyk Advisor, a pesar de tener una puntuación media-alta (78/100) y de tener una última versión publicada hace 6 meses, coincidiendo con la última versión de Python, versión 3.13.0, el proyecto está catalogado como inactivo.  
 
 3. **Hammett**:
     [Snyk Advisor](https://snyk.io/advisor/python/hammett)  
     [PyPi](https://pypi.org/project/hammett/)        
-    Hammet es un test runner que, como podemos ver en su página de Snyk Advisor, indica que es mucho más rápido que Pytest, justificando la afirmación con comparacions detalladas. Sin embargo, aunque el proyecto no está catalogado como inactivo, tiene una baja puntuación y una comunidad limitada. 
+    Hammet es un test runner que, como podemos ver en su página de Snyk Advisor, indica que es mucho más rápido que Pytest, justificando la afirmación con comparacions detalladas. Sin embargo, aunque el proyecto no está catalogado como inactivo, tiene una baja puntuación (54/100) y una comunidad limitada. 
 
 # Conclusión
 
