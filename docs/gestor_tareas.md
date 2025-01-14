@@ -2,7 +2,7 @@
 
 Para la automatización de tareas en este proyecto de Python, he evaluado distintas opciones disponibles.  Aquí detallo los criterios específicos que se establecieron antes de realizar la elección, para luego seleccionar la herramienta que mejor cumple con los objetivos del proyecto.  
 
-- La herramienta debe un peso en espacio de almacenamieto bajo para no aumentar el espacio necesario en la máquina para el desarrollo del proyecto. Podemos comprobar este criterio en la página de GitHub de cada herramienta comprobando el peso de la versión más reciente. Se considerará que la herramienta esté instalada en el Sistema Operativo que desarrolla el proyecto.   
+- La herramienta debe un peso en espacio de almacenamieto bajo para no aumentar el espacio necesario en la máquina para el desarrollo del proyecto. Podemos comprobar este criterio en la página de GitHub de cada herramienta comprobando el peso de la versión más reciente. Se considerará que una herramienta preinstalada en el Sistema Operativo que desarrolla el proyecto tiene un peso añadido de 0.   
 - Se considerará la puntuación de [Snyk Advisor](https://snyk.io/advisor/). Esta puntuación está basada en cuatro distintos criterios (Security, Popularity, Maintenance y Community). Esta puntuación nos permite comparar las herramientas de forma objetiva. 
 - Si no tiene página de [Snyk Advisor](https://snyk.io/advisor/), se considerará que la herramienta sea actualizada regularmente y mantenida. Podremos verificar este criterio de forma objetiva basándonos en las páginas de [GitHub](https://github.com/) de cada herramienta.  
 
@@ -17,11 +17,11 @@ Para gestionar dependencias en este proyecto, se evaluaron cuatro herramientas p
 
 2. **Make**: 
    [Make](https://github.com/mirror/make)  
-   `Make` es una herramienta establecida que ha sido activamente mantenida durante décadas, asegurando una alta fiabilidad y compatibilidad futura sin problemas, con una comunidad muy amplia. El tamaño de su última versión (4.4.1), publicada en Febrero de 2023, en formato tar.gz, es 950 KB. 
+   `Make` es una herramienta establecida que ha sido activamente mantenida durante décadas, asegurando una alta fiabilidad y compatibilidad futura sin problemas, con una comunidad muy amplia. El tamaño de su última versión (4.4.1), publicada en Febrero de 2023, en formato tar.gz, es 950 KB. El Sistema Operativo que desarrolla este proyecto es una máquina Ubuntu, donde Make está preinstalado. Por tanto, no es necesario instalar la herramienta descargándola de su página de GitHub. 
 
 3. **Task**: 
    [Task](https://github.com/go-task/task)    
-   Es un proyecto activo, con soporte continuo y buen mantenimiento. Tiene una comunidad en continuo crecimiento. El tamaño de su última versión (3.40.1), publicada en Diciembre de 2024, en formato tar.gz, es 486 KB. 
+   Es un proyecto activo, con soporte continuo y buen mantenimiento. Tiene una comunidad en continuo crecimiento. El tamaño de su última versión (3.40.1), publicada en Diciembre de 2024, en formato tar.gz, es 486 KB.
 
 4. **Just**: 
    [Just](https://github.com/casey/just)   
@@ -31,4 +31,4 @@ Para gestionar dependencias en este proyecto, se evaluaron cuatro herramientas p
 
 De todas las herramientas comparadas, descarto inicialmente Invoke, ya que es la que tiene un mantenimiento inactivo como bien podemos ven en su página de Snyk Advisor. 
 
-Finalmente, entre Make, Task y Just, dado que desarrollo el proyecto en una máquina Ubuntu donde Make viene preinstalado y no ocasiona espacio adicional, elijo **Make** como gestor de tareas del proyecto que se desarrolla en este repositorio. Además, cumple con los criterios establecidos, ya que es una herramienta muy conocida mantenida durante décadas. Garantiza fiabilidad. En caso de desarrollar este proyecto en una máquina con otro sistema operativo, donde Make no estuviese preinstalado, hubiese optado por Task, ya que es el menos pesado, y también cumple con los criterios establecidos.  
+Finalmente, entre Make, Task y Just, dado que desarrollo el proyecto en una máquina Ubuntu donde Make viene preinstalado, es la herramienta que menor espacio de almacenamiento añade al problema, ya que forma parte de la máquina. Por tanto, elijo **Make** como gestor de tareas del proyecto que se desarrolla en este repositorio. Además, cumple con los criterios establecidos, ya que es una herramienta muy conocida mantenida durante décadas. Garantiza fiabilidad. En caso de desarrollar este proyecto en una máquina con otro sistema operativo, donde Make no estuviese preinstalado, hubiese optado por Task, ya que sería el menos pesado a la hora de descargar la herramienta desde su página de GitHub, y también cumple con los criterios establecidos.  
