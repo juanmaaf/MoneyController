@@ -33,3 +33,12 @@ En el desarrollo de este objetivo, en primer lugar es necesario elegir una image
 
 ## Conclusión  
 
+Después de comparar las imágenes, llega el momento de elegir una de ellas. Sin embargo, no podemos comparar los pesos de las imágenes cuando no incluyen las mismas funcionalidases. Por tanto, voy a comparar el peso de las imágenes una vez tienen instaladas las funcionalidades necesarias (UV, Make, Python). De las imágenes anteriores se compararán:    
+    - Alpine Linux    
+    - debian:bookworm-slim. Elijo la que tiene menos peso de las 3 variantes planteadas.      
+    - python:slim-bullseye. Elijo la que tiene menos peso de las 3 variantes planteadas.      
+    - bitnami/python    
+
+Creando imágenes docker con las anteriores 4 bases mencionadas, incluyendo las funcionalidades necesarias para el desarrollo del proyecto, el resultado ha sido el siguiente. [Imagen](/docs/espacio_contenedores.png)  
+
+Por tanto, elijo **Alpine Linux** como imagen base para el contenedor docker que se va a desarrollar en este proyecto.    
