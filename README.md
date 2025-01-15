@@ -70,4 +70,4 @@ Para crear la imagen Docker, primero se ha elegido la imagen base.
 
 Para ejecutar el contenedor se emplea el comando:  
 
-- `docker run -u 1001 -t -v `pwd`:/app/test juanmaaf/money_controller`  
+- `docker run -u 1001 -t -v `pwd`:/app/test juanmaaf/moneycontroller`  
