@@ -64,7 +64,7 @@ El usuario dispone de un archivo csv, descargado de su aplicación del banco, do
 
 Para crear la imagen Docker, primero se ha elegido la imagen base.    
 
-- Imagen Base: `Alpine Linux`. [Más información](/docs/contenedor_docker.md)    
+- Imagen Base: `python:slim-bullseye`. [Más información](/docs/contenedor_docker.md)    
 
 - Dockerfile imagen. [Más Información](./Dockerfile)  
 
