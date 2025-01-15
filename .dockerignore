@@ -1,0 +1,6 @@
+Dockerfile
+LICENSE
+.gitignore
+./venv/
+*.yaml
+*.md
