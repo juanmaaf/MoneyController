@@ -4,3 +4,4 @@ LICENSE
 ./venv/
 *.yaml
 *.md
+*yml
