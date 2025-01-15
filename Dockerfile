@@ -1,17 +1,21 @@
 FROM alpine:latest
 
-RUN apk add --no-cache python3 py3-pip make wget bash
+RUN apk add --no-cache python3 py3-pip make curl bash
 
-RUN wget -qO- https://astral.sh/uv/install.sh | sh
+RUN adduser -D -h /home/test test
 
 WORKDIR /app/test
 
-RUN adduser -D -h /home/usuarioNoPrivilegiado usuarioNoPrivilegiado
+ENV PATH="/home/test/.local/bin:$PATH"
 
-RUN mkdir -p /home/usuarioNoPrivilegiado/.cache/ && chmod -R a+w /home/usuarioNoPrivilegiado/.cache/
+USER test
 
-ENV UV_CACHE_DIR=/home/usuarioNoPrivilegiado/.cache/uv
+RUN curl -LsSf https://astral.sh/uv/install.sh | sh
 
-USER usuarioNoPrivilegiado
+RUN mkdir -p /home/test/.cache && chmod -R a+w /home/test/.cache
+
+RUN mkdir -p /home/test/.local/share/uv && chmod -R a+w /home/test/.local/share
+
+ENV UV_CACHE_DIR=/home/test/.cache/uv
 
 ENTRYPOINT ["make", "test"]
