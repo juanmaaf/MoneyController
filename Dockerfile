@@ -24,4 +24,6 @@ RUN curl -LsSf https://astral.sh/uv/install.sh | sh
 
 ENV UV_CACHE_DIR=/home/test/.cache/uv
 
+ENV UV_PROJECT_ENVIRONMENT=/home/test/.venv
+
 ENTRYPOINT ["make", "test"]
