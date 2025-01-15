@@ -1,20 +1,22 @@
-FROM alpine:latest
+FROM python:slim-bullseye
 
-RUN apk add --no-cache python3 py3-pip make curl bash
+RUN apt-get update && apt-get install -y \
+    make \
+    curl \
+    bash \
+    && apt-get clean
 
-RUN adduser -D -h /home/test test
+WORKDIR /app/test
+
+RUN adduser --disabled-password --gecos "" test
 
 ENV PATH="/home/test/.local/bin:$PATH"
 
 USER test
 
-WORKDIR /app/test
-
 RUN curl -LsSf https://astral.sh/uv/install.sh | sh
 
 RUN mkdir -p /home/test/.cache && chmod -R a+w /home/test/.cache
-
-RUN mkdir -p /home/test/.local/share/uv && chmod -R a+w /home/test/.local/share
 
 ENV UV_CACHE_DIR=/home/test/.cache/uv
 
