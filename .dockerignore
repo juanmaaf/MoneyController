@@ -1,7 +1,7 @@
 Dockerfile
 LICENSE
 .gitignore
-./venv/
+.venv/
 *.yaml
 *.md
 *yml
