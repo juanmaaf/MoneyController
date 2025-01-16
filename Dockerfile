@@ -3,10 +3,9 @@ FROM python:slim-bullseye
 RUN apt-get update && apt-get install -y \
     make \
     curl \
-    bash \
     && apt-get clean
 
-RUN adduser --disabled-password --gecos "" test
+RUN adduser test
 
 RUN mkdir -p /home/test/.cache && \
     chmod -R a+w /home/test/.cache
