@@ -6,8 +6,6 @@ RUN apt-get update && apt-get install -y \
     bash \
     && apt-get clean
 
-WORKDIR /app/test
-
 RUN adduser --disabled-password --gecos "" test
 
 RUN mkdir -p /home/test/.cache && \
@@ -25,5 +23,7 @@ RUN curl -LsSf https://astral.sh/uv/install.sh | sh
 ENV UV_CACHE_DIR=/home/test/.cache/uv
 
 ENV UV_PROJECT_ENVIRONMENT=/home/test/.venv
+
+WORKDIR /app/test
 
 ENTRYPOINT ["make", "test"]
