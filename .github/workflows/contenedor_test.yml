@@ -3,8 +3,6 @@ name: Docker Hub Test Image
 on:
   push:
     paths:
-      - 'pyproject.toml'
-      - 'Makefile'
       - 'Dockerfile'
 
 jobs:
