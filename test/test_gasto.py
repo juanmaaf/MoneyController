@@ -33,35 +33,42 @@ class TestGasto(unittest.TestCase):
         esperado_limpio = [line.strip() for line in esperado]
         self.assertListEqual(resultado_limpio, esperado_limpio)
     
-    def test_procesar_gasto_variable(self):
-        presupuesto_test = presupuesto.Presupuesto(monto_total=0)
-        gastos_vistos = {}
-        gasto_variable_convertido = {}
-    
-        presupuesto.procesar_gasto(presupuesto_test, gasto_variable_convertido, gastos_vistos, "Alquiler", ALQUILER_IMPORTE, FECHA_ALQUILER)
-        
-        self.assertEqual(len(presupuesto_test.gastos_variables), 1)
-        self.assertEqual(presupuesto_test.gastos_variables[0].descripcion, "Alquiler")
-        self.assertEqual(presupuesto_test.gastos_variables[0].categoria, CategoriaGasto.VARIABLE)
-    
-    def test_procesar_gasto_fijo(self):
-        presupuesto_test = presupuesto.Presupuesto(monto_total=0)
-        gastos_vistos = {}
-        gasto_variable_convertido = {}
+    def test_procesar_gasto(self):
+        casos = [
+            {
+                "descripcion": "Alquiler",
+                "monto": ALQUILER_IMPORTE,
+                "fechas": [FECHA_ALQUILER],
+                "fijos_esperados": 0,
+                "variables_esperados": 1,
+            },
+            {
+                "descripcion": "Alquiler",
+                "monto": ALQUILER_IMPORTE,
+                "fechas": [FECHA_ALQUILER, FECHA_ALQUILER_2],
+                "fijos_esperados": 2,
+                "variables_esperados": 0,
+            },
+        ]
 
-        presupuesto.procesar_gasto(presupuesto_test, gasto_variable_convertido, gastos_vistos, "Alquiler", ALQUILER_IMPORTE, FECHA_ALQUILER)
-        presupuesto.procesar_gasto(presupuesto_test, gasto_variable_convertido, gastos_vistos, "Alquiler", ALQUILER_IMPORTE, FECHA_ALQUILER_2)
+        for caso in casos:
+            with self.subTest(caso=caso):
+                presupuesto_test = presupuesto.Presupuesto(monto_total=0)
+                gastos_vistos = {}
+                gasto_variable_convertido = {}
 
-        self.assertEqual(len(presupuesto_test.gastos_fijos), 2)
-        self.assertEqual(presupuesto_test.gastos_fijos[0].descripcion, "Alquiler")
-        self.assertEqual(presupuesto_test.gastos_fijos[0].categoria, CategoriaGasto.FIJO)
-        self.assertEqual(presupuesto_test.gastos_fijos[0].fecha, FECHA_ALQUILER_2)
-
-        self.assertEqual(presupuesto_test.gastos_fijos[1].descripcion, "Alquiler")
-        self.assertEqual(presupuesto_test.gastos_fijos[1].categoria, CategoriaGasto.FIJO)
-        self.assertEqual(presupuesto_test.gastos_fijos[1].fecha, FECHA_ALQUILER)
-
-        self.assertEqual(len(presupuesto_test.gastos_variables), 0)
+                for fecha in caso["fechas"]:
+                    presupuesto.procesar_gasto(
+                        presupuesto_test,
+                        gasto_variable_convertido,
+                        gastos_vistos,
+                        caso["descripcion"],
+                        caso["monto"],
+                        fecha,
+                    )
+                    
+                self.assertEqual(len(presupuesto_test.gastos_fijos), caso["fijos_esperados"])
+                self.assertEqual(len(presupuesto_test.gastos_variables), caso["variables_esperados"])
         
     def test_procesar_atributos(self):
         casos = [
