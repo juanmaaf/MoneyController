@@ -3,3 +3,4 @@ entidad: money_controller/gasto.py
 automatizar:
   fichero: "Makefile"
   orden: "make"
+
