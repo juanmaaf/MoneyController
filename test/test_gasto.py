@@ -18,17 +18,20 @@ META_AHORRO = 500
 GASTO_ADICIONAL = 100
 
 class TestGasto(unittest.TestCase):
-    def test_leer_archivo_correcto(self):
-        contenido = """Fecha,Concepto,Importe,Tipo Movimiento
+    @patch("builtins.open", new_callable=mock_open, read_data="""Fecha,Concepto,Importe,Tipo Movimiento
         2024-01-01,Alquiler,226.67,Gasto
-        2024-01-01,Gimnasio,25,Gasto"""
-        
-        with patch("builtins.open", mock_open(read_data=contenido)):
-            resultado = presupuesto.leer_archivo_csv("archivo_correcto.csv")
-            self.assertEqual(len(resultado), 3)
-            self.assertEqual(resultado[0].strip(), "Fecha,Concepto,Importe,Tipo Movimiento")
-            self.assertEqual(resultado[1].strip(), "2024-01-01,Alquiler,226.67,Gasto")
-            self.assertEqual(resultado[2].strip(), "2024-01-01,Gimnasio,25,Gasto")
+        2024-01-01,Gimnasio,25,Gasto""")
+    def test_leer_archivo_correcto(self, mock_file):
+        resultado = presupuesto.leer_archivo_csv("archivo_correcto.csv")
+        esperado = [
+            "Fecha,Concepto,Importe,Tipo Movimiento",
+            "2024-01-01,Alquiler,226.67,Gasto",
+            "2024-01-01,Gimnasio,25,Gasto"
+        ]
+        self.assertEqual(len(resultado), len(esperado))
+        resultado_limpio = [line.strip() for line in resultado]
+        esperado_limpio = [line.strip() for line in esperado]
+        self.assertListEqual(resultado_limpio, esperado_limpio)
     
     def test_procesar_gasto_variable(self):
         presupuesto_test = presupuesto.Presupuesto(monto_total=0)
