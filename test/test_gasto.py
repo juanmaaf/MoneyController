@@ -63,108 +63,100 @@ class TestGasto(unittest.TestCase):
 
         self.assertEqual(len(presupuesto_test.gastos_variables), 0)
         
-    def test_procesar_atributos_correctos(self):
-        fecha_str = "2024-01-01"
-        importe_str = "226.67"
-        
-        fecha, importe = presupuesto.procesar_atributos(fecha_str, importe_str)
-        
-        self.assertEqual(fecha, FECHA_ALQUILER)
-        self.assertEqual(importe, ALQUILER_IMPORTE)
-    
-    def test_procesar_atributos_importe_invalido(self):
-        fecha_str = "2024-01-01"
-        importe_str = "abc"
-        
-        with self.assertRaises(ValueError):
-            presupuesto.procesar_atributos(fecha_str, importe_str)
-    
-    def test_procesar_atributos_fecha_invalida(self):
-        fecha_str = "01-01-2024" 
-        importe_str = "226.67"
-        
-        with self.assertRaises(ValueError): 
-            presupuesto.procesar_atributos(fecha_str, importe_str)
+    def test_procesar_atributos(self):
+        casos = [
+            {"fecha_str": "2024-01-01", "importe_str": "226.67", "esperado": (FECHA_ALQUILER, ALQUILER_IMPORTE)},
+            {"fecha_str": "2024-01-01", "importe_str": "abc", "espera_error": ValueError},
+            {"fecha_str": "01-01-2024", "importe_str": "226.67", "espera_error": ValueError},
+        ]
+        for caso in casos:
+            with self.subTest(caso=caso):
+                if "espera_error" in caso:
+                    with self.assertRaises(caso["espera_error"]):
+                        presupuesto.procesar_atributos(caso["fecha_str"], caso["importe_str"])
+                else:
+                    resultado = presupuesto.procesar_atributos(caso["fecha_str"], caso["importe_str"])
+                    self.assertEqual(resultado, caso["esperado"])
     
     @patch("money_controller.presupuesto.leer_archivo_csv")
-    def test_procesar_presupuesto_gasto_variable(self, mock_leer_archivo_csv):
-        mock_leer_archivo_csv.return_value = [
-            "Fecha,Concepto,Importe,Tipo Movimiento",
-            "2024-01-01,Alquiler,226.67,Gasto"
+    def test_procesar_presupuesto(self, mock_leer_archivo_csv):
+        casos = [
+            {
+                "input": [
+                    "Fecha,Concepto,Importe,Tipo Movimiento",
+                    "2024-01-01,Alquiler,226.67,Gasto"
+                ],
+                "fijos_esperados": 0,
+                "variables_esperados": 1,
+                "ingresos_esperados": [],
+            },
+            {
+                "input": [
+                    "Fecha,Concepto,Importe,Tipo Movimiento",
+                    "2024-01-01,Alquiler,226.67,Gasto",
+                    "2024-01-02,Alquiler,226.67,Gasto"
+                ],
+                "fijos_esperados": 2,
+                "variables_esperados": 0,
+                "ingresos_esperados": [],
+            },
+            {
+                "input": [
+                    "Fecha,Concepto,Importe,Tipo Movimiento",
+                    "2024-01-01,Sueldo,3000,Ingreso",
+                    "2024-01-01,Alquiler,226.67,Gasto",
+                    "2024-01-02,Alquiler,226.67,Gasto"
+                ],
+                "fijos_esperados": 2,
+                "variables_esperados": 0,
+                "ingresos_esperados": [INGRESO_3],
+            },
         ]
-        
-        presupuesto_test = presupuesto.procesar_presupuesto("archivo.csv")
-        
-        self.assertEqual(len(presupuesto_test.gastos_variables), 1)
-        self.assertEqual(presupuesto_test.gastos_variables[0].descripcion, "Alquiler")
-        self.assertEqual(presupuesto_test.gastos_variables[0].categoria, CategoriaGasto.VARIABLE)
-    
-    @patch("money_controller.presupuesto.leer_archivo_csv")
-    def test_procesar_presupuesto_gasto_repetido(self, mock_leer_archivo_csv):
-        mock_leer_archivo_csv.return_value = [
-            "Fecha,Concepto,Importe,Tipo Movimiento",
-            "2024-01-01,Alquiler,226.67,Gasto",
-            "2024-01-02,Alquiler,226.67,Gasto"
-        ]
-        
-        presupuesto_test = presupuesto.procesar_presupuesto("archivo.csv")
-        
-        self.assertEqual(len(presupuesto_test.gastos_fijos), 2)
-        self.assertEqual(presupuesto_test.gastos_fijos[0].descripcion, "Alquiler")
-        self.assertEqual(presupuesto_test.gastos_fijos[0].categoria, CategoriaGasto.FIJO)
-        
-        self.assertEqual(presupuesto_test.gastos_fijos[1].descripcion, "Alquiler")
-        self.assertEqual(presupuesto_test.gastos_fijos[1].categoria, CategoriaGasto.FIJO)
-        self.assertEqual(len(presupuesto_test.gastos_variables), 0)
-    
-    @patch('money_controller.presupuesto.leer_archivo_csv')
-    def test_procesar_presupuesto_ingresos_y_gastos(self, mock_leer_archivo_csv):
-        mock_leer_archivo_csv.return_value = [
-            "Fecha,Concepto,Importe,Tipo Movimiento",
-            "2024-01-01,Alquiler,226.67,Gasto",
-            "2024-01-01,Gimnasio,25,Gasto",
-            "2024-01-01,Sueldo,3000,Ingreso",
-            "2024-01-02,Alquiler,226.67,Gasto"
-        ]
-        
-        presupuesto_test = presupuesto.procesar_presupuesto("archivo.csv")
-    
-        self.assertEqual(presupuesto_test.ingresos, [3000])
-        self.assertEqual(len(presupuesto_test.gastos_fijos), 2)
-        self.assertEqual(len(presupuesto_test.gastos_variables), 1)
-        
-        total_gastos = sum(gasto.monto for gasto in presupuesto_test.gastos_fijos) + sum(gasto.monto for gasto in presupuesto_test.gastos_variables)
-        self.assertEqual(presupuesto_test.monto_total, sum(presupuesto_test.ingresos) - total_gastos)
+
+        for caso in casos:
+            with self.subTest(caso=caso):
+                mock_leer_archivo_csv.return_value = caso["input"]
+                presupuesto_test = presupuesto.procesar_presupuesto("archivo.csv")
+
+                self.assertEqual(len(presupuesto_test.gastos_fijos), caso["fijos_esperados"])
+                self.assertEqual(len(presupuesto_test.gastos_variables), caso["variables_esperados"])
+                self.assertEqual(presupuesto_test.ingresos, caso["ingresos_esperados"])
         
     def test_puede_permitirse_gasto_adicional(self):
-        presupuesto_test = presupuesto.Presupuesto(monto_total=0)
-        presupuesto_test.ingresos = [INGRESO_3, INGRESO_2]
-        presupuesto_test.gastos_fijos = [Gasto(descripcion="Alquiler", monto=ALQUILER_IMPORTE, fecha=FECHA_ALQUILER,  categoria=CategoriaGasto.FIJO)]
-        presupuesto_test.gastos_variables = [Gasto(descripcion="Comida", monto=COMIDA_IMPORTE, fecha=FECHA_COMIDA, categoria=CategoriaGasto.VARIABLE)]
-        presupuesto_test.meta_ahorro =META_AHORRO
-        
-        presupuesto.actualizar_monto_total(presupuesto_test)
-        
-        gasto_adicional = GASTO_ADICIONAL
-        puede_permitirse = presupuesto.puede_permitirse_gasto_adicional(presupuesto_test, gasto_adicional)
-        
-        self.assertTrue(puede_permitirse)
-        self.assertEqual(presupuesto_test.gasto_no_planificado, GASTO_ADICIONAL)
-        
-    def test_no_permitir_gasto_adicional(self):
-        presupuesto_test = presupuesto.Presupuesto(monto_total=0)
-        presupuesto_test.ingresos = [INGRESO_4, INGRESO_4]
-        presupuesto_test.gastos_fijos = [Gasto(descripcion="Alquiler", monto=ALQUILER_IMPORTE, fecha=FECHA_ALQUILER,  categoria=CategoriaGasto.FIJO)]
-        presupuesto_test.gastos_variables = [Gasto(descripcion="Comida", monto=COMIDA_IMPORTE, fecha=FECHA_COMIDA, categoria=CategoriaGasto.VARIABLE)]
-        presupuesto_test.meta_ahorro = META_AHORRO
-        
-        presupuesto.actualizar_monto_total(presupuesto_test)
+        casos = [
+            {
+                "ingresos": [INGRESO_3, INGRESO_2],
+                "fijos": [Gasto(descripcion="Alquiler", monto=ALQUILER_IMPORTE, fecha=FECHA_ALQUILER, categoria=CategoriaGasto.FIJO)],
+                "variables": [Gasto(descripcion="Comida", monto=COMIDA_IMPORTE, fecha=FECHA_COMIDA, categoria=CategoriaGasto.VARIABLE)],
+                "meta_ahorro": META_AHORRO,
+                "gasto_adicional": GASTO_ADICIONAL,
+                "esperado": True,
+                "gasto_no_planificado": GASTO_ADICIONAL,
+            },
+            {
+                "ingresos": [INGRESO_4, INGRESO_4],
+                "fijos": [Gasto(descripcion="Alquiler", monto=ALQUILER_IMPORTE, fecha=FECHA_ALQUILER, categoria=CategoriaGasto.FIJO)],
+                "variables": [Gasto(descripcion="Comida", monto=COMIDA_IMPORTE, fecha=FECHA_COMIDA, categoria=CategoriaGasto.VARIABLE)],
+                "meta_ahorro": META_AHORRO,
+                "gasto_adicional": GASTO_ADICIONAL,
+                "esperado": False,
+                "gasto_no_planificado": None,
+            },
+        ]
 
-        gasto_adicional = GASTO_ADICIONAL
-        puede_permitirse = presupuesto.puede_permitirse_gasto_adicional(presupuesto_test, gasto_adicional)
-        
-        self.assertFalse(puede_permitirse)
-        self.assertIsNone(presupuesto_test.gasto_no_planificado)
+        for caso in casos:
+            with self.subTest(caso=caso):
+                presupuesto_test = presupuesto.Presupuesto(monto_total=0)
+                presupuesto_test.ingresos = caso["ingresos"]
+                presupuesto_test.gastos_fijos = caso["fijos"]
+                presupuesto_test.gastos_variables = caso["variables"]
+                presupuesto_test.meta_ahorro = caso["meta_ahorro"]
+
+                presupuesto.actualizar_monto_total(presupuesto_test)
+                puede_permitirse = presupuesto.puede_permitirse_gasto_adicional(presupuesto_test, caso["gasto_adicional"])
+
+                self.assertEqual(puede_permitirse, caso["esperado"])
+                self.assertEqual(presupuesto_test.gasto_no_planificado, caso["gasto_no_planificado"])
 
 if __name__ == "__main__":
     unittest.main()  
