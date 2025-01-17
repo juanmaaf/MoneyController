@@ -2,6 +2,9 @@
 requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
 
+[tool.setuptools.packages]
+find = { include = ["money_controller*", "config*"] }
+
 [project]
 name = "money_controller"
 version = "0.1.0"
