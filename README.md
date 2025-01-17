@@ -68,6 +68,10 @@ Para crear la imagen Docker, primero se ha elegido la imagen base.
 
 - Dockerfile imagen. [Más Información](./Dockerfile)  
 
+Para construir el contenedor en local a partir del Dockerfile se emplea el comando (en el mismo directorio donde esté el Dockerfile): 
+
+- `docker build -t juanmaaf/moneycontroller .`
+
 Para ejecutar el contenedor se emplea el comando:  
 
 - `docker run -u 1001 -t -v `pwd`:/app/test juanmaaf/moneycontroller`  
