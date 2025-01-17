@@ -33,8 +33,9 @@ class TestGasto(unittest.TestCase):
     def test_procesar_gasto_variable(self):
         presupuesto_test = presupuesto.Presupuesto(monto_total=0)
         gastos_vistos = {}
+        gasto_variable_convertido = {}
     
-        presupuesto.procesar_gasto(presupuesto_test, gastos_vistos, "Alquiler", ALQUILER_IMPORTE, FECHA_ALQUILER)
+        presupuesto.procesar_gasto(presupuesto_test, gasto_variable_convertido, gastos_vistos, "Alquiler", ALQUILER_IMPORTE, FECHA_ALQUILER)
         
         self.assertEqual(len(presupuesto_test.gastos_variables), 1)
         self.assertEqual(presupuesto_test.gastos_variables[0].descripcion, "Alquiler")
@@ -43,9 +44,10 @@ class TestGasto(unittest.TestCase):
     def test_procesar_gasto_fijo(self):
         presupuesto_test = presupuesto.Presupuesto(monto_total=0)
         gastos_vistos = {}
+        gasto_variable_convertido = {}
 
-        presupuesto.procesar_gasto(presupuesto_test, gastos_vistos, "Alquiler", ALQUILER_IMPORTE, FECHA_ALQUILER)
-        presupuesto.procesar_gasto(presupuesto_test, gastos_vistos, "Alquiler", ALQUILER_IMPORTE, FECHA_ALQUILER_2)
+        presupuesto.procesar_gasto(presupuesto_test, gasto_variable_convertido, gastos_vistos, "Alquiler", ALQUILER_IMPORTE, FECHA_ALQUILER)
+        presupuesto.procesar_gasto(presupuesto_test, gasto_variable_convertido, gastos_vistos, "Alquiler", ALQUILER_IMPORTE, FECHA_ALQUILER_2)
 
         self.assertEqual(len(presupuesto_test.gastos_fijos), 2)
         self.assertEqual(presupuesto_test.gastos_fijos[0].descripcion, "Alquiler")
