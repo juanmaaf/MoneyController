@@ -48,12 +48,13 @@ def procesar_gasto(presupuesto, gasto_variable_convertido, gastos_vistos, descri
     """
     Procesa un gasto y lo clasifica como fijo o variable. Lógica de negocio. 
 
-    Se catalogará como gasto fijo si es recurrente "visto". 
-    Todo primer gasto registrado, cuya clave no aparezca en el array gastos_vistos, se registrará como VARIABLE.
-    Al registrar un gasto como FIJO, debe buscarse en el array de gastos variables si sigue el primer gasto que se registró con esa clave.
-    Si un gasto ya existe en la categoría VARIABLE con la misma clave, 
-    se convierte en FIJO (y se mueve de la lista de gastos variables a la lista de gastos fijos). 
-    Solo se hará la búsqueda y conversión UNA VEZ. 
+    Se catalogará como gasto FIJO si es recurrente "visto". 
+    Todo gasto cuya clave no aparezca en el array gastos_vistos se registrará como VARIABLE.
+    Al procesar un gasto cuya clave aparezca en el array gastos_vistos, este gasto se registrará como FIJO. 
+        - No obstante, el primer gasto procesado con esta clave se registró como VARIABLE. No es coherente. Aquí entra el array gasto_variable_convertido.
+        - Si la clave del gasto NO aparece en el array gasto_variable_convertido, se deberá convertir ese gasto VARIABLE a FIJO para mantener la coherencia entre los gastos con misma clave.
+        - Si la clave del gasto SÍ aparece en el array gasto_variable_convertido, no se hará nada pues ya hay coherencia en los datos.
+        - Por tanto, solo se aplicará esta conversión cuando se procese el segundo gasto con una clave determinada.  
 
     Parámetros:
     - presupuesto: Objeto Presupuesto que contiene gastos fijos y variables.
@@ -66,36 +67,46 @@ def procesar_gasto(presupuesto, gasto_variable_convertido, gastos_vistos, descri
     clave_gasto = (descripcion, monto)
 
     if clave_gasto in gastos_vistos:
-        agregar_gasto_fijo(presupuesto, gasto_variable_convertido, clave_gasto, descripcion, monto, fecha)
+        agregar_gasto_fijo(presupuesto, descripcion, monto, fecha)
+        
+        if clave_gasto not in gasto_variable_convertido:
+            convertir_gasto_variable_a_fijo(presupuesto, gasto_variable_convertido, clave_gasto)
     else:
         agregar_gasto_variable(presupuesto, gastos_vistos, clave_gasto, descripcion, monto, fecha)
     
-def agregar_gasto_fijo(presupuesto, gasto_variable_convertido, clave_gasto, descripcion, monto, fecha):
+def agregar_gasto_fijo(presupuesto, descripcion, monto, fecha):
     """
-    Agrega un nuevo gasto a la categoría FIJO, dado que su clave está en el array gastos_vistos. 
-    Además, busca si el primer gasto que se registró con esa clave sigue como VARIABLE y lo convierte en FIJO por coherencia. 
-    Solo se hará la búsqueda y conversión UNA VEZ. 
-    Parámetros: 
+    Agrega un nuevo gasto a la categoría FIJO.
+    Parámetros:
     - presupuesto: Objeto Presupuesto que contiene gastos fijos y variables.
-    - gastos_variable_convertido: Diccionario para rastrear los gastos variables convertidos a fijos. 
-    - clave_gasto: Clave del gasto (descripcion, monto).
-    - descripcion: Descripcion del gasto.
+    - descripcion: Descripción del gasto.
     - monto: Monto del gasto.
-    - fecha: Fecha del gasto.  
+    - fecha: Fecha del gasto.
     """
     gasto = Gasto(descripcion=descripcion, monto=monto, fecha=fecha, categoria=CategoriaGasto.FIJO)
-    presupuesto.gastos_fijos.append(gasto)
+    presupuesto.gastos_fijos.append(gasto)    
     
-    if clave_gasto not in gasto_variable_convertido:
-        gasto_variable_existente = next(
-            (g for g in presupuesto.gastos_variables if g.descripcion == descripcion and g.monto == monto and g.categoria == CategoriaGasto.VARIABLE),
-            None
-        )
-        presupuesto.gastos_variables.remove(gasto_variable_existente)
-        gasto_variable_existente.categoria = CategoriaGasto.FIJO
-        presupuesto.gastos_fijos.append(gasto_variable_existente)
-        
-        gasto_variable_convertido[clave_gasto] = True
+def convertir_gasto_variable_a_fijo(presupuesto, gasto_variable_convertido, clave_gasto):
+    """
+    Busca en el array gastos_variables del presupuesto un gasto que tenga la clave_gasto pasada como parámetro. 
+    Este gasto presenta una incoherencia en los datos dado que el resto de gastos con la misma clave están registrados como FIJOS.
+    Debe eliminarse del array gastos_variables, actualizarse a FIJO e incluirse en el array gastos_fijos.
+    La comprobación que permite ejecutar este método se realiza en el método principal procesar_gasto.  
+    
+    Parámetros:
+    - presupuesto: Objeto Presupuesto que contiene gastos fijos y variables.
+    - gastos_variable_convertido: Diccionario para rastrear los gastos variables convertidos a fijos.
+    - clave_gasto: Clave del gasto (descripcion, monto).  
+    """
+    gasto_variable_existente = next(
+        (g for g in presupuesto.gastos_variables if g.descripcion == clave_gasto[0] and g.monto == clave_gasto[1] and g.categoria == CategoriaGasto.VARIABLE),
+        None
+    )
+    presupuesto.gastos_variables.remove(gasto_variable_existente)
+    gasto_variable_existente.categoria = CategoriaGasto.FIJO
+    presupuesto.gastos_fijos.append(gasto_variable_existente)
+    
+    gasto_variable_convertido[clave_gasto] = True
 
 def agregar_gasto_variable(presupuesto, gastos_vistos, clave_gasto, descripcion, monto, fecha):
     """
