@@ -41,12 +41,11 @@ Se han definido los siguientes milestones:
 
 - Lenguaje de programación: `Python`
 
-- Gestor de dependencias: `UV`. [Más información](/docs/gestor_dependencias.md)
+- Gestor de Dependencias: `UV`. [Más información](/docs/gestor_dependencias.md)
 
-- Gestor de tareas: `Make`. [Más información](/docs/gestor_tareas.md)
+- Gestor de Tareas: `Make`. [Más información](/docs/gestor_tareas.md)
     
-    - Para instalar las dependencias del proyecto realizamos:
-    `make install`
+    - Para instalar las dependencias del proyecto realizamos: `make install`
 
     - Para verificar que el código compila correctamente:
     `make check`
