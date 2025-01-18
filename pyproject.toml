@@ -12,3 +12,6 @@ description = "sistema de gestión de gastos"
 readme = "README.md"
 license = { text = "MIT" }
 requires-python = ">=3.13"
+dependencies = [
+    "pytest>=8.3.4",
+]

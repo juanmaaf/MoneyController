@@ -4,4 +4,7 @@ install:
 	uv lock
 
 check:
-	python -m py_compile money_controller/*.py
+	python3 -m py_compile money_controller/*.py
+
+test: 
+	uv run pytest 
