@@ -29,6 +29,14 @@ Se han definido los siguientes milestones:
 
 [Milestones](/docs/milestones.md)  
 
+## Biblioteca de Aserciones y Test Runner
+
+- Biblioteca de aserciones: `Unittest`. [Más información](/docs/biblioteca_aserciones.md)
+
+- Test Runner: `Pytest`. [Más información](/docs/test_runner.md)  
+
+- Herramienta CLI para ejecutar test: `Pytest`. [Más información](/docs/herramientas_cli.md)  
+
 # Herramientas utilizadas
 
 - Lenguaje de programación: `Python`
@@ -42,3 +50,12 @@ Se han definido los siguientes milestones:
 
     - Para verificar que el código compila correctamente:
     `make check`
+
+    - Para ejecutar los test realizamos:
+    `make test`
+
+## Datos del Usuario 
+
+El usuario dispone de un archivo csv, descargado de su aplicación del banco, donde pueden verse los distintos ingresos y gastos listados por fecha. Los atributos que proporciona el banco son 5 (Fecha,Concepto,Categoría,Importe,Tipo Movimiento). Como podemos ver, hay gastos que podemos identificar gracias a los atributos Concepto y Categoría. La gestión de los Bizum (categoría Transferencias) es más difícil de identificar, ya que el usuario puede no recordar qué son esos Bizum enviados y recibidos, pero el banco dispone del concepto asociado al Bizum. Dado que en este proyecto se van a gestionar los gastos, para identificar los Bizum, se incluirá el concepto que proporciona el banco asociado a la Transferencia.
+
+[CSV con los Datos del Usuario](/docs/gastos.csv)
