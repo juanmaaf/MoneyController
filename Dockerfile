@@ -1,4 +1,4 @@
-FROM python:slim-bullseye
+FROM python:slim-bookworm
 
 RUN apt-get update && apt-get install -y \
     make \
