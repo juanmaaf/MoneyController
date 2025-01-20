@@ -1,4 +1,4 @@
-.PHONY: install check
+.PHONY: install check test
 
 install:
 	uv lock
