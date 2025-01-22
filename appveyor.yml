@@ -1,18 +1,11 @@
 version: 1.0.{build}
-image: Visual Studio 2019
-
+image: Ubuntu 22.04
 
 build:
   scripts:
     - git clone https://github.com/juanmaaf/MoneyController.git
     - cd MoneyController 
-
-    - name: Install make
-      run: sudo apt-get install make
-
-    - name: Install UV
-      run: wget -qO- https://astral.sh/uv/install.sh | sh
-
+    - wget -qO- https://astral.sh/uv/install.sh | sh
     - make test
 
 test:
