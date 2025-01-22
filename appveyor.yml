@@ -2,7 +2,7 @@ version: 1.0.{build}
 image: Ubuntu 22.04
 
 build:
-  scripts:
+  build_script:
     - git clone https://github.com/juanmaaf/MoneyController.git
     - cd MoneyController 
     - wget -qO- https://astral.sh/uv/install.sh | sh
