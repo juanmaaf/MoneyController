@@ -1,14 +1,14 @@
 version: 1.0.{build}
 image: Ubuntu 22.04
 
-build:
-  build_script:
-    - git clone https://github.com/juanmaaf/MoneyController.git
-    - cd MoneyController 
-    - wget -qO- https://astral.sh/uv/install.sh | sh
-    - make test
+install:
+  - sudo apt-get install make
+  - wget -qO- https://astral.sh/uv/install.sh | sh
 
-test:
-  scripts:
+build:
+  before_build:
+    - git clone https://github.com/juanmaaf/MoneyController.git
     - cd MoneyController
+
+  build_script:
     - make test
