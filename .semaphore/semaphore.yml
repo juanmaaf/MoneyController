@@ -12,8 +12,10 @@ blocks:
     task:
       jobs:
         - name: Test con Make
-        docker:
-          - image: juanmaaf/moneycontroller
-        commands:
-          - checkout
-          - make test
+          docker:
+            image: juanmaaf/moneycontroller
+          commands:
+            - checkout
+            - run:
+                name: Ejecutar los tests
+                command: make test
