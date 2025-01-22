@@ -5,6 +5,8 @@ before_build:
   - git clone https://github.com/juanmaaf/MoneyController.git
   - cd MoneyController
   - wget -qO- https://astral.sh/uv/install.sh | sh
+  - echo "export PATH=$PATH:/home/appveyor/.local/bin" >> ~/.bashrc
+  - source ~/.bashrc
 
 build_script:
   - make test
