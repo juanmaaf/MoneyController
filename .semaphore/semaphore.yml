@@ -6,14 +6,15 @@ agent:
   machine:
     type: e1-standard-2
     os_image: ubuntu2204
+  containers:
+    - name: main
+      image: juanmaaf/moneycontroller
 
 blocks:
   - name: Test
     task:
       jobs:
         - name: Test con Make
-          docker:
-            image: juanmaaf/moneycontroller
           commands:
             - checkout
             - run:
