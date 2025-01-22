@@ -3,13 +3,17 @@ version: v1.0
 name: Prueba de Semaphore como Herramienta CI
 
 agent:
-  docker:
-    - image: juanmaaf/moneycontroller
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu2204
+
 blocks:
   - name: Test
     task:
       jobs:
         - name: Test con Make
-          commands:
-            - checkout
-            - make test
+        docker:
+          - image: juanmaaf/moneycontroller
+        commands:
+          - checkout
+          - make test
