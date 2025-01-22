@@ -5,10 +5,9 @@ install:
   - sudo apt-get install make
   - wget -qO- https://astral.sh/uv/install.sh | sh
 
-build:
-  before_build:
-    - git clone https://github.com/juanmaaf/MoneyController.git
-    - cd MoneyController
+before_build:
+  - git clone https://github.com/juanmaaf/MoneyController.git
+  - cd MoneyController
 
-  build_script:
-    - make test
+build_script:
+  - make test
