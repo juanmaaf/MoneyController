@@ -1,0 +1,14 @@
+version: v1.0
+
+agent:
+  docker:
+    - image: juanmaaf/moneycontroller
+
+blocks:
+  - name: Test
+    task:
+      jobs:
+        - name: Test con Make
+          commands:
+            - checkout
+            - make test
