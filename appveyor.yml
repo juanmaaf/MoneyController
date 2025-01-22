@@ -1,0 +1,17 @@
+version: 1.0.{build}
+image: Visual Studio 2019
+
+install:
+  - git clone https://github.com/juanmaaf/MoneyController.git
+  - cd MoneyController
+  - sudo apt-get update
+  - sudo apt-get install -y make
+  - wget -qO- https://astral.sh/uv/install.sh | sh
+
+build:
+  script:
+    - make test
+
+test:
+  script:
+    - echo "Tests ejecutados"
