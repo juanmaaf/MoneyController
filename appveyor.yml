@@ -1,12 +1,11 @@
 version: 1.0.{build}
 image: Ubuntu2204
 
-before_build:
+install:
   - git clone https://github.com/juanmaaf/MoneyController.git
   - cd MoneyController
   - wget -qO- https://astral.sh/uv/install.sh | sh
-  - echo "export PATH=$PATH:/home/appveyor/.local/bin" >> ~/.bashrc
-  - source ~/.bashrc
+  - export PATH=$PATH:/home/appveyor/.local/bin
 
 build_script:
   - make test
