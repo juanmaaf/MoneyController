@@ -6,7 +6,7 @@ Para poder añadir integración continua al proyecto que se desarrolla en este r
 
 1. La herramienta debe ser un servicio gratuito (freemium) 
 2. La herramienta debe poder conectarse al repositorio GitHub.  
-3. Intentar minimizar las dependencias. Se considerarán las herramientas que no añadan dependencias al proyecto.   
+3. Intentar minimizar las dependencias. Se considerarán las herramientas que no añadan dependencias al proyecto. 
 
 ## Comparación de Herramientas  
 
@@ -36,3 +36,10 @@ Para poder añadir integración continua al proyecto que se desarrolla en este r
 
 
 ## Conclusión  
+
+GitHub Actions, Circle CI, Semaphore CI y Appveyor son las herramientas que cumplen los criterios establecidos. Según el guion, debemos examinar varios sistemas de integración continua, por lo que se van a examinar y configurar los 4 mencionados.
+
+- En primer lugar, **GitHub Actions**. Es necesario definir un archivo dentro del directorio `.github/workflows/` al que llamaremos `ci.yml`.  
+- En segundo lugar, **Circle CI**. Es necesario definir un archivo `config.yml` dentro de un directorio que también debe crearse llamado `.circleci`.
+- En tercer lugar, **Semaphore CI**. Es necesario definir un archivo `semaphore.yml` dentro de un directorio que también debe crearse llamado `.semaphore`.
+- Por último, **Appveyor**. Es necesario definir un archivo `appveyor.yml` en la raíz del proyecto que se desarrolla en este repositorio.   
