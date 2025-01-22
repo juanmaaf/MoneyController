@@ -1,6 +1,5 @@
 version: 1.0.{build}
-image: Previous Visual Studio 2022
-
+image: Ubuntu2204
 install:
   - wget -qO- https://astral.sh/uv/install.sh | sh
 
