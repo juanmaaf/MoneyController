@@ -9,7 +9,7 @@ install:
   - wget -qO- https://astral.sh/uv/install.sh | sh
 
 build:
-  script:
+  after_build:
     - make test
 
 test:
