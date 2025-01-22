@@ -2,7 +2,6 @@ version: 1.0.{build}
 image: Previous Visual Studio 2022
 
 install:
-  - apt-get install make
   - wget -qO- https://astral.sh/uv/install.sh | sh
 
 before_build:
