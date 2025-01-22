@@ -17,6 +17,4 @@ blocks:
         - name: Test con Make
           commands:
             - checkout
-            - run:
-                name: Ejecutar los tests
-                command: make test
+            - make test
