@@ -4,3 +4,4 @@ automatizar:
   fichero: "Makefile"
   orden: "make"
 test: test/test_gasto.py
+CI: .github/workflows/ci.yml
