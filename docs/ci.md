@@ -39,7 +39,7 @@ Para poder añadir integración continua al proyecto que se desarrolla en este r
 
 GitHub Actions, Circle CI, Semaphore CI y Appveyor son las herramientas que cumplen los criterios establecidos. Según el guion, debemos examinar varios sistemas de integración continua, por lo que se van a examinar y configurar los 4 mencionados.
 
-- En primer lugar, **GitHub Actions**. Es necesario definir un archivo dentro del directorio `.github/workflows/` al que llamaremos `ci.yml`.  
+- En primer lugar, **GitHub Actions**. Es necesario definir un archivo dentro del directorio `.github/workflows/` al que llamaremos `ci.yml`. En cuanto a las versiones de Python que se testean, he elegido Python 3.13 debido a que es la versión requerida por el proyecto, según el archivo `pyproject.toml`. Además, se ha testeado Python 3.10, ya que es una versión estable y ampliamente adoptada, que sigue siendo compatible con muchas configuraciones de producción y tiene soporte a largo plazo.    
 - En segundo lugar, **Circle CI**. Es necesario definir un archivo `config.yml` dentro de un directorio que también debe crearse llamado `.circleci`.
 - En tercer lugar, **Semaphore CI**. Es necesario definir un archivo `semaphore.yml` dentro de un directorio que también debe crearse llamado `.semaphore`.
 - Por último, **Appveyor**. Es necesario definir un archivo `appveyor.yml` en la raíz del proyecto que se desarrolla en este repositorio.   
