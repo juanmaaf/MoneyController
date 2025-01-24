@@ -6,7 +6,6 @@ Para poder añadir integración continua al proyecto que se desarrolla en este r
 
 1. La herramienta debe ser un servicio gratuito (freemium). Es un requisito mínimo.    
 2. La herramienta debe poder conectarse al repositorio GitHub a través del REST API para checks [REST API GitHub](https://docs.github.com/en/rest/checks?apiVersion=2022-11-28). Es un requisito mínimo.    
-3. Intentar minimizar las dependencias. Se considerarán las herramientas que no añadan dependencias al proyecto. 
 
 ## Comparación de Herramientas  
 
