@@ -1,0 +1,17 @@
+version: v1.0
+
+name: Prueba de Semaphore como Herramienta CI
+
+agent:
+  machine:
+    type: f1-standard-2
+
+blocks:
+  - name: Test
+    task:
+      jobs:
+        - name: Test con Make
+          commands:
+            - checkout
+            - docker pull juanmaaf/moneycontroller
+            - docker run -v `pwd`:/app/test -t juanmaaf/moneycontroller
