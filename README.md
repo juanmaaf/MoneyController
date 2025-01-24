@@ -51,7 +51,9 @@ Se han definido los siguientes milestones:
     `make check`
 
     - Para ejecutar los test realizamos:
-    `make test`
+    `make test`  
+
+- Herramienta de configuración: `Dynaconf`. [Más información](/docs/configuracion.md)  
 
 ## Datos del Usuario 
 
