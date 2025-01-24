@@ -16,4 +16,4 @@ blocks:
         - name: Test con Make
           commands:
             - checkout
-            - docker exec main make test
+            - docker run -v `pwd`:/app/test -t juanmaaf/moneycontroller
