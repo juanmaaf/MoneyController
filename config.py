@@ -1,6 +1,5 @@
 
 from dynaconf import Dynaconf
-from logger import init_logger
 
 settings = Dynaconf(
     envvar_prefix="DYNACONF",
