@@ -30,3 +30,9 @@ Para poder añadir a los programas implementados el servicio esencial de registr
     Es una herramienta activa con actualizaciones frecuentes, como podemos ver en su repositorio de GitHub. Su última versión se publicó hace un mes. Podemos ver las dependencias que requiere en [Pyproject.toml](https://github.com/nhairs/python-json-logger/blob/main/pyproject.toml). Requiere instalarse como paquete. En el apartado `dependecies` podemos ver que hay 1 depencencia para versiones de Python inferiores a la 3.10 (`typing-extensions`). Esta dependencia no se aplica a nuestro proyecto. En el bloque `build-system` podemos ver que requiere la dependencia de construcción: `setuptools`.  
 
 ## Conclusión
+
+Tras evaluar las diferentes herramientas de registro de actividad en función de los criterios de mantenimiento y actualización y reducción de dependencias, la elección más adecuada para este proyecto es **Loguru**.
+
+Aunque Loguru introduce una dependencia en su bloque `build-system`, además de la instalación del paquete, su ventaja principal radica en ser una herramienta moderna y activa y altamente flexible. Esto la convierte en una opción ideal para proyectos como el que se desarrolla en este repositorio.
+
+El nivel de actividad y las actualizaciones regulares de Loguru demuestran que el proyecto está bien mantenido, lo que asegura la longevidad de la herramienta en el tiempo. Por lo tanto, **Loguru** se ajusta mejor a las necesidades del proyecto, proporcionando una solución robusta y fácil de usar para gestionar los logs de manera eficiente.
