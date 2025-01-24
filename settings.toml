@@ -4,4 +4,4 @@ env = "development"
 
 [log]
 level = "INFO"
-logfile = "money_controller.log"
+logfile = "/tmp/money_controller.log"

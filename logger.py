@@ -4,7 +4,7 @@ from config import settings
 
 def init_logger():
     log_level = settings.get("log.level", "INFO")
-    log_file = settings.get("log.logfile", "money_controller.log")
+    log_file = settings.get("log.logfile", "/tmp/money_controller.log")
 
     logger.remove()
 
