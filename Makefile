@@ -1,4 +1,7 @@
-.PHONY: install check test
+.PHONY: install install-uv check test
+
+install-uv:
+	wget -qO- https://astral.sh/uv/install.sh | sh
 
 install:
 	uv lock
