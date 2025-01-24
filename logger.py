@@ -11,5 +11,3 @@ def init_logger():
     logger.add(sys.stdout, level=log_level, format="{time} | {level} | {message}")
 
     logger.add(log_file, level=log_level, format="{time} | {level} | {message}", rotation="1 week")
-
-init_logger()
