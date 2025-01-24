@@ -3,6 +3,8 @@ version: v1.0
 name: Prueba de Semaphore como Herramienta CI
 
 agent:
+  machine:
+    type: f1-standard-2
   containers:
     - name: main
       image: 'juanmaaf/moneycontroller'
@@ -14,4 +16,4 @@ blocks:
         - name: Test con Make
           commands:
             - checkout
-            - make test
+            - docker exec main make test
