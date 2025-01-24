@@ -24,7 +24,7 @@ jobs:
         run: sudo apt-get install make
 
       - name: Instalar UV
-        run: wget -qO- https://astral.sh/uv/install.sh | sh
+        run: make install-uv
 
       - name: Ejecutar test
         run: make test
