@@ -5,7 +5,9 @@ name: Prueba de Semaphore como Herramienta CI
 agent:
   machine:
     type: f1-standard-2
-    os_image: ubuntu2204
+  containers:
+    - name: main
+      image: 'juanmaaf/moneycontroller'
 
 blocks:
   - name: Test
@@ -14,5 +16,4 @@ blocks:
         - name: Test con Make
           commands:
             - checkout
-            - docker pull juanmaaf/moneycontroller
-            - docker run -v `pwd`:/app/test -t juanmaaf/moneycontroller
+            - make test
