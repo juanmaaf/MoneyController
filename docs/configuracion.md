@@ -35,3 +35,9 @@ Para poder añadir a los programas implementados el servicio esencial de uso de 
     Como podemos ver en su página de Snyk Advisor, tiene una media-alta puntuación (85/100), teniendo una peor puntuación en el criterio correspondiente a la comunidad. Como podemos ver en su repositorio de GitHub, es una herramienta activa y mantenida, con una última versión publicada hace 3 semanas.  
 
 ## Conclusión
+
+Basándonos en los criterios establecidos, **Dynaconf** es la herramienta más adecuada. Tiene la puntuación más alta en Snyk Advisor (97/100), destacando en todos los aspectos evaluados, y su mantenimiento es sobresaliente, con una versión publicada hace solo 3 días.  
+
+Otras opciones como Pydantic y Dependency-injector también cumplen los criterios establecidos, tienen una alta puntuación y son herramientas activas y mantenidas. Podrían ser elegidas. 
+
+Por tanto, dado que es la herramienta con mayor puntuación en Snyk Advisor, **Dynaconf** es la herramienta que mejor se ajusta a los objetivos del proyecto que se desarrolla en este repositorio y es la herramienta de configuración que elijo.
