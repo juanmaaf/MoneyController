@@ -5,7 +5,6 @@ Para poder añadir integración continua al proyecto que se desarrolla en este r
 ## Criterios de Selección  
 
 1. La herramienta debe ser un servicio gratuito (freemium). Es un requisito mínimo.    
-2. La herramienta debe poder conectarse al repositorio GitHub a través del REST API para checks [REST API GitHub](https://docs.github.com/en/rest/checks?apiVersion=2022-11-28). Es un requisito mínimo.    
 
 ## Comparación de Herramientas  
 
