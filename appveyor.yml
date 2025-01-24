@@ -4,8 +4,8 @@ image: Ubuntu2204
 install:
   - git clone https://github.com/juanmaaf/MoneyController.git
   - cd MoneyController
+  - make install-uv
   - export PATH=$PATH:/home/appveyor/.local/bin
 
 build_script: 
-  - make install-uv
   - make test
