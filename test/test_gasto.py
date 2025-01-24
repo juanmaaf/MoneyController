@@ -5,9 +5,8 @@ from money_controller import presupuesto
 from money_controller.gasto import Gasto
 from money_controller.categoriaGasto import CategoriaGasto
 from logger import init_logger
-from loguru import logger
 
-init_logger()
+logger = init_logger()
 
 INGRESO_1 = 1000
 INGRESO_2 = 500
