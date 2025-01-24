@@ -4,6 +4,10 @@ from datetime import datetime
 from money_controller import presupuesto
 from money_controller.gasto import Gasto
 from money_controller.categoriaGasto import CategoriaGasto
+from logger import init_logger
+from loguru import logger
+
+init_logger()
 
 INGRESO_1 = 1000
 INGRESO_2 = 500
@@ -22,6 +26,7 @@ class TestGasto(unittest.TestCase):
         2024-01-01,Alquiler,226.67,Gasto
         2024-01-01,Gimnasio,25,Gasto""")
     def test_leer_archivo_correcto(self, mock_file):
+        logger.info("Iniciando test: test_leer_archivo_correcto")
         resultado = presupuesto.leer_archivo_csv("archivo_correcto.csv")
         esperado = [
             "Fecha,Concepto,Importe,Tipo Movimiento",
@@ -32,8 +37,10 @@ class TestGasto(unittest.TestCase):
         resultado_limpio = [line.strip() for line in resultado]
         esperado_limpio = [line.strip() for line in esperado]
         self.assertListEqual(resultado_limpio, esperado_limpio)
+        logger.success("test_leer_archivo_correcto finalizado con éxito")
     
     def test_procesar_gasto(self):
+        logger.info("Iniciando test: test_procesar_gasto")
         casos = [
             {
                 "descripcion": "Alquiler",
@@ -53,6 +60,7 @@ class TestGasto(unittest.TestCase):
 
         for caso in casos:
             with self.subTest(caso=caso):
+                logger.debug(f"Subtest iniciado: {caso}")
                 presupuesto_test = presupuesto.Presupuesto(monto_total=0)
                 gastos_vistos = {}
                 gasto_variable_convertido = {}
@@ -69,8 +77,10 @@ class TestGasto(unittest.TestCase):
                     
                 self.assertEqual(len(presupuesto_test.gastos_fijos), caso["fijos_esperados"])
                 self.assertEqual(len(presupuesto_test.gastos_variables), caso["variables_esperados"])
+        logger.success("test_procesar_gasto finalizado con éxito")
         
     def test_procesar_atributos(self):
+        logger.info("Iniciando test: test_procesar_atributos")
         casos = [
             {"fecha_str": "2024-01-01", "importe_str": "226.67", "esperado": (FECHA_ALQUILER, ALQUILER_IMPORTE)},
             {"fecha_str": "2024-01-01", "importe_str": "abc", "espera_error": ValueError},
@@ -78,15 +88,18 @@ class TestGasto(unittest.TestCase):
         ]
         for caso in casos:
             with self.subTest(caso=caso):
+                logger.debug(f"Subtest iniciado: {caso}")
                 if "espera_error" in caso:
                     with self.assertRaises(caso["espera_error"]):
                         presupuesto.procesar_atributos(caso["fecha_str"], caso["importe_str"])
                 else:
                     resultado = presupuesto.procesar_atributos(caso["fecha_str"], caso["importe_str"])
                     self.assertEqual(resultado, caso["esperado"])
+        logger.success("test_procesar_atributos finalizado con éxito")
     
     @patch("money_controller.presupuesto.leer_archivo_csv")
     def test_procesar_presupuesto(self, mock_leer_archivo_csv):
+        logger.info("Iniciando test: test_procesar_presupuesto")
         casos = [
             {
                 "input": [
@@ -122,14 +135,17 @@ class TestGasto(unittest.TestCase):
 
         for caso in casos:
             with self.subTest(caso=caso):
+                logger.debug(f"Subtest iniciado: {caso}")
                 mock_leer_archivo_csv.return_value = caso["input"]
                 presupuesto_test = presupuesto.procesar_presupuesto("archivo.csv")
 
                 self.assertEqual(len(presupuesto_test.gastos_fijos), caso["fijos_esperados"])
                 self.assertEqual(len(presupuesto_test.gastos_variables), caso["variables_esperados"])
                 self.assertEqual(presupuesto_test.ingresos, caso["ingresos_esperados"])
+        logger.success("test_procesar_presupuesto finalizado con éxito")
         
     def test_puede_permitirse_gasto_adicional(self):
+        logger.info("Iniciando test: test_puede_permitirse_gasto_adicional")
         casos = [
             {
                 "ingresos": [INGRESO_3, INGRESO_2],
@@ -153,6 +169,7 @@ class TestGasto(unittest.TestCase):
 
         for caso in casos:
             with self.subTest(caso=caso):
+                logger.debug(f"Subtest iniciado: {caso}")
                 presupuesto_test = presupuesto.Presupuesto(monto_total=0)
                 presupuesto_test.ingresos = caso["ingresos"]
                 presupuesto_test.gastos_fijos = caso["fijos"]
@@ -164,6 +181,7 @@ class TestGasto(unittest.TestCase):
 
                 self.assertEqual(puede_permitirse, caso["esperado"])
                 self.assertEqual(presupuesto_test.gasto_no_planificado, caso["gasto_no_planificado"])
+        logger.success("test_puede_permitirse_gasto_adicional finalizado con éxito")
 
 if __name__ == "__main__":
     unittest.main()  
