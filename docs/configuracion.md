@@ -12,21 +12,26 @@ Para poder añadir a los programas implementados el servicio esencial de uso de 
 1. **Dynaconf**:  
     [Snyk Advisor](https://snyk.io/advisor/python/dynaconf)  
     [GitHub](https://github.com/dynaconf/dynaconf)  
+    Como podemos ver en su página de Snyk Advisor, tiene una alta puntuación (97/100), destacando en los 4 criterios. Como podemos ver en su repositorio de GitHub, es una herramienta activa y mantenida, con una última versión publicada hace 3 días.  
 
 2. **Pydantic**:  
     [Snyk Advisor](https://snyk.io/advisor/python/pydantic)  
     [GitHub](https://github.com/pydantic/pydantic)  
+    Como podemos ver en su página de Snyk Advisor, tiene una alta puntuación (94/100), destacando en los 4 criterios. Como podemos ver en su repositorio de GitHub, es una herramienta activa y mantenida, con una última versión publicada hace menos de 1 día.  
 
 3. **Configparser**:  
     [Snyk Advisor](https://snyk.io/advisor/python/configparser)  
     [GitHub](https://github.com/jaraco/configparser)  
+    Como podemos ver en su página de Snyk Advisor, tiene una media-alta puntuación (82/100), teniendo una peor puntuación en el criterio correspondiente a la comunidad. Como podemos ver en su repositorio de GitHub, es una herramienta activa y mantenida, con una última versión publicada en agosto de 2024.  
 
 4. **Python-dotenv**:  
     [Snyk Advisor](https://snyk.io/advisor/python/python-dotenv)  
     [GitHub](https://github.com/theskumar/python-dotenv)  
+    Como podemos ver en su página de Snyk Advisor, tiene una media-alta puntuación (84/100), teniendo una peor puntuación en el criterio correspondiente al mantenimiento, catalogado como `Sustainable`. Como podemos ver en su repositorio de GitHub, su última versión fue publicada en enero de 2024, bajando el nivel de actividad respecto a años anteriores donde se publicaban 2 versiones por año.   
 
 5. **Dependecy-injector**:  
     [Snyk Advisor](https://snyk.io/advisor/python/dependency-injector)  
     [GitHub](https://github.com/ets-labs/python-dependency-injector)    
+    Como podemos ver en su página de Snyk Advisor, tiene una media-alta puntuación (85/100), teniendo una peor puntuación en el criterio correspondiente a la comunidad. Como podemos ver en su repositorio de GitHub, es una herramienta activa y mantenida, con una última versión publicada hace 3 semanas.  
 
 ## Conclusión
