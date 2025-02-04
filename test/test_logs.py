@@ -8,7 +8,7 @@ class TestLogger(unittest.TestCase):
     @patch("logger.settings")
     def test_init_logger(self, mock_settings):
         mock_settings.get.side_effect = lambda key, default: {
-            "log.level": "DEBUG",
+            "log.level": "INFO",
             "log.logfile": "/tmp/test_log.log",
         }.get(key, default)
 
@@ -23,12 +23,12 @@ class TestLogger(unittest.TestCase):
 
             mock_add.assert_any_call(
                 sys.stdout,
-                level="DEBUG",
+                level="INFO",
                 format="{time} | {level} | {message}",
             )
             mock_add.assert_any_call(
                 "/tmp/test_log.log",
-                level="DEBUG",
+                level="INFO",
                 format="{time} | {level} | {message}",
                 rotation="1 week",
             )
