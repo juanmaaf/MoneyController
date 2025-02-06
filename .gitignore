@@ -14,3 +14,6 @@ __pycache__/
 
 # Ignora directory di ambienti virtuali Python
 venv/
+
+# Ignore dynaconf secret files
+.secrets.*

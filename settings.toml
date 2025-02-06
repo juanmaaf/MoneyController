@@ -1,0 +1,7 @@
+[app]
+name = "MoneyController"
+env = "development"
+
+[log]
+level = "INFO"
+logfile = "/tmp/money_controller.log"

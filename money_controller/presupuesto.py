@@ -3,6 +3,7 @@ from dataclasses import dataclass, field
 from typing import List, Optional
 from datetime import datetime
 from money_controller.categoriaGasto import CategoriaGasto
+from loguru import logger
 
 @dataclass
 class Presupuesto:
@@ -31,12 +32,15 @@ def leer_archivo_csv(ruta_archivo):
     try:
         with open(ruta_archivo, "r", encoding="utf-8") as archivo:
             lineas = archivo.readlines()
+            logger.info(f"Archivo {ruta_archivo} leído correctamente. Total líneas: {len(lineas)}")
             return lineas
     except FileNotFoundError:
+        logger.error(f"El archivo {ruta_archivo} no existe.")
         raise ValueError(f"El archivo {ruta_archivo} no existe")
     except ValueError as e:
         raise e
     except Exception as e:
+        logger.exception(f"Error inesperado al leer el archivo: {e}")
         raise RuntimeError(f"Error al leer el archivo: {e}")
     
 def procesar_atributos(fecha_str, monto_str):
@@ -67,11 +71,14 @@ def procesar_gasto(presupuesto, gasto_variable_convertido, gastos_vistos, descri
     clave_gasto = (descripcion, monto)
 
     if clave_gasto in gastos_vistos:
+        logger.info(f"Procesando gasto recurrente: {descripcion} - {monto} - {fecha}")
         agregar_gasto_fijo(presupuesto, descripcion, monto, fecha)
         
         if clave_gasto not in gasto_variable_convertido:
+            logger.info(f"Convirtiendo gasto variable a fijo: {descripcion} - {monto}")
             convertir_gasto_variable_a_fijo(presupuesto, gasto_variable_convertido, clave_gasto)
     else:
+        logger.info(f"Registrando nuevo gasto variable: {descripcion} - {monto} - {fecha}")
         agregar_gasto_variable(presupuesto, gastos_vistos, clave_gasto, descripcion, monto, fecha)
     
 def agregar_gasto_fijo(presupuesto, descripcion, monto, fecha):
@@ -157,11 +164,15 @@ def procesar_presupuesto(ruta_archivo):
 
 def puede_permitirse_gasto_adicional(presupuesto, importe_adicional: float) -> bool:
     total_gastos = sum(gasto.monto for gasto in presupuesto.gastos_fijos) + sum(gasto.monto for gasto in presupuesto.gastos_variables)
+    logger.info(f"Total de los gastos: {total_gastos}")
     
     ingreso_disponible = sum(presupuesto.ingresos) - total_gastos - presupuesto.meta_ahorro
+    logger.info(f"Ingreso disponible después de gastos y meta de ahorro: {ingreso_disponible}")
     
     if ingreso_disponible >= importe_adicional:
         presupuesto.gasto_no_planificado = importe_adicional
+        logger.info(f"Se puede permitir el gasto adicional de {importe_adicional}.")
         return True
     else:
+        logger.info(f"No se puede permitir el gasto adicional de {importe_adicional}. Ingreso disponible insuficiente.")
         return False

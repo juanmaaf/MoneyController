@@ -5,3 +5,4 @@ automatizar:
   orden: "make"
 test: test/test_gasto.py
 CI: .github/workflows/ci.yml
+configuracion: settings.toml
